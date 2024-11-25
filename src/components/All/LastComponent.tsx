@@ -1,4 +1,3 @@
-import React from "react";
 import FeatureContainers from "./FeatureContainer";
 import Container from "./Container";
 import IllustrationCenter from "./IllustrationCenter";
