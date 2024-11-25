@@ -1,5 +1,4 @@
-import React from "react";
-import CardComment from "./CardComment";
+
 const CustomMedianHeadingIntegration = ({ content, addLayOut }: { content: string; addLayOut: string }) => {
 	return (
 		<div>

@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import tw from "tailwind-styled-components";
 interface addlayout {
 	addlayout?: string;

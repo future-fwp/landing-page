@@ -1,30 +1,88 @@
-# React + TypeScript + Vite
+# TW Stellar - Modern Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive landing page built with React, TypeScript, and Tailwind CSS. This project demonstrates best practices in modern web development with a focus on performance and maintainability.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Modern React 18 with TypeScript
+- Tailwind CSS for styling
+- Responsive design
+- Component-based architecture
+- TypeScript for type safety
+- Vite for fast development and building
+- ESLint for code quality
 
-## Expanding the ESLint configuration
+## 📦 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React 18.3.1
+- TypeScript
+- Tailwind CSS 3.4
+- Vite 5.3
+- React Router DOM 6.25
+- ESLint
 
-- Configure the top-level `parserOptions` property like this:
+## 🛠️ Installation
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+1. Clone the repository:
+```bash
+git clone [your-repo-url]
+cd tw-stellar
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:5173`
+
+## 📝 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Run ESLint
+- `npm run preview` - Preview production build
+
+## 🏗️ Project Structure
+
+```
+src/
+├── components/     # Reusable components
+├── pages/         # Page components
+├── assets/        # Static assets
+├── App.tsx        # Main App component
+└── main.tsx       # Entry point
+```
+
+## 🔧 Development
+
+### Code Style
+
+This project uses ESLint and TypeScript for code quality. The configuration can be found in:
+- `.eslintrc.cjs`
+- `tsconfig.json`
+
+### Styling
+
+Tailwind CSS is used for styling. Custom configurations can be found in:
+- `tailwind.config.js`
+- `postcss.config.js`
+
+## 🚀 Building for Production
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+The build artifacts will be stored in the `dist/` directory.
+
+## 📄 License
+
+This project is licensed under the MIT License.

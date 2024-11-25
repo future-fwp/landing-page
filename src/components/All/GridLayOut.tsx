@@ -1,4 +1,4 @@
-import React from "react";
+
 
 type GridLayOutProps = {
 	smallSpan: string;

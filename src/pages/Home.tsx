@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Container from "../components/All/Container";
 import { Link } from "react-router-dom";
 import CustomTitle from "../components/All/CustomTitle";
@@ -10,7 +10,6 @@ import CustomSpanPurpleGradient from "../components/All/CustomSpanPurpleGradient
 import CustomMedianHeading from "../components/All/CustomMedianHeading";
 import CardFirstFeature from "../components/Home/CardFirstFeature";
 import CustomHeroHeader from "../components/All/CustomHeroHeader";
-import GlowGradient from "../components/Home/GlowGradient";
 import CardThirdFeature from "../components/Home/CardThirdFeature";
 import CardSecondandFourthFeatureSVG from "../components/Home/CardSecondandFourthFeatureSVG";
 import Pricing from "../components/Pricing";
@@ -19,6 +18,7 @@ import IllustrationBlusTriangle from "../components/Home/IllustrationBlusTriangl
 import FeatureContainers from "../components/All/FeatureContainer";
 import CardTestimonial from "../components/Home/CardTestimonial";
 import LastComponent from "../components/All/LastComponent";
+import RadialCanvas from "../components/Home/RadialCanvas";
 
 const testimonials = [
 	{
@@ -232,7 +232,7 @@ const cardDataInthisrdFeature = [
 		description: "Incorporate rich user profiling, and facilitate more transactions.",
 		link: "#0",
 	},
-].map((each, index) => {
+].map((each) => {
 	return {
 		...each,
 		sourceImage: "https://preview.cruip.com/stellar/" + each.sourceImage.slice(1, each.sourceImage.length),
@@ -251,7 +251,7 @@ const featureforFourthComponent = [
 						width="16"
 						height="16"
 					>
-						<path d="M13 16c-.153 0-.306-.035-.447-.105l-3.851-1.926c-.231.02-.465.031-.702.031-4.411 0-8-3.14-8-7s3.589-7 8-7 8 3.14 8 7c0 1.723-.707 3.351-2 4.63V15a1.003 1.003 0 0 1-1 1Zm-4.108-4.054c.155 0 .308.036.447.105L12 13.382v-2.187c0-.288.125-.562.341-.752C13.411 9.506 14 8.284 14 7c0-2.757-2.691-5-6-5S2 4.243 2 7s2.691 5 6 5c.266 0 .526-.02.783-.048a1.01 1.01 0 0 1 .109-.006Z"></path>
+						<path d="M13 16c-.153 0-.306-.035-.447-.105l-3.851-1.926c-.231.02-.465.031-.702.031-4.411 0-8-3.14-8-7s3.589-7 8-7 8 3.14 8 7c0 1.723-.707 3.351-2 4.63V15a1.003 1.003 0 0 1-1 1Zm-4.108-4.054c.155 0 .308.036.447.105L12 13.382v-2.187c0-.288.125-.562.341-.752C13.411 9.506 14 8.284 14 7c0-2.757-2.691-5-6-5S2 4.243 2 7s2.691 6 6 6 6-2.7 6-6c0-.6.4-1 1-1Z"></path>
 					</svg>
 				),
 				description: "Login box must find the right balance for the user convenience, privacy, and security.",
@@ -322,7 +322,7 @@ const featureforFourthComponent = [
 						width="16"
 						height="16"
 					>
-						<path d="M14 0H2c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h8l5-5V1c0-.6-.4-1-1-1ZM3 2h10v8H9v4H3V2Z"></path>
+						<path d="M14 0H2c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h8l5-5V1c0-.6.4-1 1-1ZM3 2h10v8H9v4H3V2Z"></path>
 					</svg>
 				),
 				description: "Login box must find the right balance for the user convenience, privacy, and security.",
@@ -532,24 +532,21 @@ const Home = () => {
 										customparagraphgrayprops="mb-[2rem] "
 									></CustomParagraphGrayText>
 									<div className="mt-[2rem] max-w-[20rem] ">
-										{cards.map((each, index) => {
-											return (
-												<CardFirstFeature
-													key={JSON.stringify(each) + index}
-													activeClick={each.activeClick}
-													svgElement={each.svgElement}
-													content={each.content}
-													setCards={setCards}
-													index={index}
-												></CardFirstFeature>
-											);
-										})}
+										{cards.map((each, index) => (
+											<CardFirstFeature
+												activeClick={each.activeClick}
+												svgElement={each.svgElement}
+												content={each.content}
+												setCards={setCards}
+												index={index}
+											/>
+										))}
 									</div>
 								</div>
 
 								{/* image-radial gradient  */}
 								<div className="md:w-[calc(100%-58.333%)] w-full border min-h-auto text-white">
-									this is radial picture created by canvas
+									<RadialCanvas />
 								</div>
 							</div>
 						</FeatureContainers>
@@ -672,16 +669,13 @@ const Home = () => {
 							</div>
 
 							<div className="grid md:grid-cols-3 gap-6">
-								{FeatureSecondComponent.map((each, index) => {
-									return (
-										<CardSecondandFourthFeatureSVG
-											key={index}
-											svgElement={each.svgElement}
-											title={each.title}
-											description={each.description}
-										/>
-									);
-								})}
+								{FeatureSecondComponent.map((each) => (
+									<CardSecondandFourthFeatureSVG
+										svgElement={each.svgElement}
+										title={each.title}
+										description={each.description}
+									/>
+								))}
 							</div>
 						</FeatureContainers>
 					</Container>
@@ -778,21 +772,22 @@ const Home = () => {
 							/>
 
 							<CardForContainerThirdFeature>
-								{cardDataInthisrdFeature.map((each, index) => (
-									<CardThirdFeature
-										key={index}
-										sourceImage={each.sourceImage}
-										altImage={each.altImage}
-										title={each.title}
-										description={each.description}
-										link={each.link}
-										currentGradient={index === currentIndex}
-									/>
-								))}
+								<div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentIndex * 340}px)` }}>
+									{cardDataInthisrdFeature.map((each) => (
+										<CardThirdFeature
+											sourceImage={each.sourceImage}
+											altImage={each.altImage}
+											title={each.title}
+											description={each.description}
+											link={each.link}
+											currentGradient={currentIndex === cardDataInthisrdFeature.indexOf(each)}
+										/>
+									))}
+								</div>
 							</CardForContainerThirdFeature>
 							<div className="mt-[2rem]">
 								<div className="flex justify-end">
-									<div className=" w-[3rem] h-[3rem] flex justify-center items-center">
+									<div className="w-[3rem] cursor-pointer h-[3rem] flex justify-center items-center">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											fill="none"
@@ -802,9 +797,7 @@ const Home = () => {
 												currentIndex === 0 ? "stroke-gray-500" : "stroke-white"
 											} hover:!stroke-purple-500`}
 											onClick={() => {
-												if (currentIndex === 0) {
-													setCurrentIndex(0);
-												} else {
+												if (currentIndex > 0) {
 													setCurrentIndex(currentIndex - 1);
 												}
 											}}
@@ -816,24 +809,25 @@ const Home = () => {
 											/>
 										</svg>
 									</div>
-									<div className="border w-[3rem] h-[3rem] flex justify-center items-center">
+									<div className="w-[3rem] cursor-pointer h-[3rem] flex justify-center items-center">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											fill="none"
 											viewBox="0 0 24 24"
 											stroke-width="1.5"
-											stroke="white"
 											className={`size-6 ${
-												currentIndex === 4 ? "stroke-gray-500" : "stroke-white"
+												currentIndex === cardDataInthisrdFeature.length - 1 ? "stroke-gray-500" : "stroke-white"
 											} hover:!stroke-purple-500`}
 											onClick={() => {
-												currentIndex === 4 ? setCurrentIndex(4) : setCurrentIndex(currentIndex + 1);
+												if (currentIndex < cardDataInthisrdFeature.length - 1) {
+													setCurrentIndex(currentIndex + 1);
+												}
 											}}
 										>
 											<path
 												stroke-linecap="round"
 												stroke-linejoin="round"
-												d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+												d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
 											/>
 										</svg>
 									</div>
@@ -894,11 +888,11 @@ const Home = () => {
 								></CustomParagraphGrayText>
 							</div>
 
-							{featureforFourthComponent.map((each, index) => {
+							{featureforFourthComponent.map((each) => {
 								return (
 									<div
 										className="py-4 first:pt-0"
-										key={index}
+										key={each.category}
 									>
 										<CustomSpanPurpleGradient
 											content={each.category}
@@ -906,16 +900,13 @@ const Home = () => {
 										></CustomSpanPurpleGradient>
 
 										<div className="grid md:grid-cols-3 gap-6">
-											{each.features.map((each, index) => {
-												return (
-													<CardSecondandFourthFeatureSVG
-														key={index}
-														svgElement={each.svgElement}
-														title={each.name}
-														description={each.description}
-													></CardSecondandFourthFeatureSVG>
-												);
-											})}
+											{each.features.map((each) => (
+												<CardSecondandFourthFeatureSVG
+													svgElement={each.svgElement}
+													title={each.name}
+													description={each.description}
+												></CardSecondandFourthFeatureSVG>
+											))}
 										</div>
 									</div>
 								);
@@ -999,13 +990,12 @@ All the lorem ipsum generators on the Internet tend to repeat predefined chunks 
 				<section>
 					<div className="md:px-6 px-4 mx-auto max-w-[48rem] ">
 						<FeatureContainers props="md:pb-[5rem] pb-[3rem] ">
-							{testimonials.map((each, index) => {
+							{testimonials.map((each) => {
 								return (
 									<>
-										{currentNameIndexForTestimonial === index && (
+										{currentNameIndexForTestimonial === testimonials.indexOf(each) && (
 											<CardTestimonial
 												imageUrl={each.imageUrl}
-												key={index}
 												content={each.content}
 												altImage={each.altName}
 											></CardTestimonial>
@@ -1014,19 +1004,17 @@ All the lorem ipsum generators on the Internet tend to repeat predefined chunks 
 								);
 							})}
 							<div className="flex  max-md:max-w-[300px] mx-auto flex-col md:flex-row justify-center ">
-								{namesAndPositions.map((each, index) => {
+								{namesAndPositions.map((each) => {
 									return (
 										<button
-											key={index}
+											key={each.name}
 											className={`${
-												currentNameIndexForTestimonial === index
+												currentNameIndexForTestimonial === namesAndPositions.indexOf(each)
 													? "border text-white "
 													: "border-gray-400 border text-gray-400"
 											} px-3 py-1.5 m-1.5 text-[0.875rem] rounded-full`}
 											onClick={() => {
-												console.log("clicked");
-												setcurrentNameIndexForTestimonial(index);
-												console.log(currentNameIndexForTestimonial);
+												setcurrentNameIndexForTestimonial(namesAndPositions.indexOf(each));
 											}}
 										>
 											{each.name} {each.position}

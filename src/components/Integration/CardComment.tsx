@@ -1,4 +1,4 @@
-import React from "react";
+
 import CustomAppNameText from "./CustomAppNameText";
 import CustomTextDescriptionCard from "./CustomTextDescriptionCard";
 const CardComment = ({

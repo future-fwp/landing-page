@@ -1,4 +1,4 @@
-import React from "react";
+
 import tw from "tailwind-styled-components";
 import CustomParagraphGrayText from "../All/CustomParagraph";
 import CustomLinkWithArrow from "../All/CustomLinkWithArrow";

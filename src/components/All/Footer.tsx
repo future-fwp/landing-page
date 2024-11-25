@@ -1,4 +1,4 @@
-import React from "react";
+
 import Container from "./Container";
 import FeatureContainers from "./FeatureContainer";
 import { Link } from "react-router-dom";

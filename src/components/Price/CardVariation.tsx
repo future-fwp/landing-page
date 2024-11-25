@@ -1,4 +1,3 @@
-import React from "react";
 
 const CardVariation = ({ keyText, feature, lastKey }: { keyText: string; feature: string; lastKey?: string }) => {
 	return (

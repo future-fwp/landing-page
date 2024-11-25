@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Container from "./Container";
 import tw from "tailwind-styled-components";
 const NavContainer = tw.div`md:h-[5rem] h-[4rem] flex items-center justify-between`;

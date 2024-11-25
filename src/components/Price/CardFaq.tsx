@@ -1,4 +1,4 @@
-import React from "react";
+
 
 const CardFaq = ({ question, answer }: { question: string; answer: string }) => {
 	return (

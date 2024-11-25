@@ -1,12 +1,8 @@
-import React from "react";
+
 import CustomSpanPurpleGradient from "./All/CustomSpanPurpleGradient";
-import CustomMedianHeading from "./All/CustomMedianHeading";
 import CustomLinkWithArrow from "./All/CustomLinkWithArrow";
-import IllustrationCenter from "./All/IllustrationCenter";
-import { omitUndefined } from "mongoose";
-const MonthlyOrYearly = () => {
-	return <div></div>;
-};
+
+
 
 const PlanHeader = ({
 	content,
@@ -15,8 +11,9 @@ const PlanHeader = ({
 	customforpricecomponent,
 }: {
 	content: string;
+	isPurpleColor?: boolean;
 	amountMoney: string;
-	isPurpleColor: boolean;
+	
 	customforpricecomponent?: boolean;
 }) => {
 	return (

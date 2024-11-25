@@ -1,7 +1,92 @@
-import React from "react";
+import Container from "../components/All/Container";
+import CustomSpanPurpleGradient from "../components/All/CustomSpanPurpleGradient";
+import CustomTitle from "../components/All/CustomTitle";
+import CustomParagraphGrayText from "../components/All/CustomParagraph";
+import FeatureContainers from "../components/All/FeatureContainer";
+
+interface ChangeLogEntry {
+    version: string;
+    date: string;
+    changes: string[];
+}
+
+const changeLogData: ChangeLogEntry[] = [
+    {
+        version: "2.0.0",
+        date: "March 2024",
+        changes: [
+            "Added RadialCanvas component for improved visual effects",
+            "Implemented smooth card transitions in feature showcase",
+            "Improved TypeScript types and removed unnecessary React imports",
+            "Enhanced UI responsiveness and accessibility",
+            "Updated documentation and component structure"
+        ]
+    },
+    {
+        version: "1.5.0",
+        date: "February 2024",
+        changes: [
+            "Added new testimonial section",
+            "Implemented custom gradient effects",
+            "Enhanced mobile responsiveness",
+            "Added new feature demonstrations"
+        ]
+    },
+    {
+        version: "1.0.0",
+        date: "January 2024",
+        changes: [
+            "Initial release",
+            "Basic landing page structure",
+            "Core features implementation",
+            "Responsive design foundation"
+        ]
+    }
+];
 
 const ChangeLog = () => {
-	return <div>ChangeLog</div>;
+    return (
+        <section className="py-20">
+            <Container>
+                <div className="text-center mb-16">
+                    <CustomSpanPurpleGradient
+                        content="Updates"
+                        addlayout="pb-3"
+                    />
+                    <CustomTitle
+                        content="Product changelog"
+                        addlayout="pb-4"
+                    />
+                    <CustomParagraphGrayText
+                        content="Stay up to date with all our product changes"
+                        customparagraphgrayprops="text-center"
+                    />
+                </div>
+
+                <FeatureContainers props="max-w-3xl mx-auto">
+                    {changeLogData.map((entry, index) => (
+                        <div key={entry.version} className={`mb-12 ${index !== changeLogData.length - 1 ? 'border-b border-gray-800 pb-12' : ''}`}>
+                            <div className="flex items-center mb-4">
+                                <span className="text-purple-500 font-semibold mr-2">v{entry.version}</span>
+                                <span className="text-gray-500">• {entry.date}</span>
+                            </div>
+                            <ul className="space-y-4">
+                                {entry.changes.map((change, idx) => (
+                                    <li key={idx} className="flex items-start">
+                                        <span className="mr-3 mt-1 text-purple-500">•</span>
+                                        <CustomParagraphGrayText
+                                            content={change}
+                                            customparagraphgrayprops="!text-left"
+                                        />
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                </FeatureContainers>
+            </Container>
+        </section>
+    );
 };
 
 export default ChangeLog;
