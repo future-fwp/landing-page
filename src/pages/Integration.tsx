@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 import Container from "../components/All/Container";
 import FeatureContainers from "../components/All/FeatureContainer";
 import CustomSpanPurpleGradient from "../components/All/CustomSpanPurpleGradient";
@@ -150,13 +150,16 @@ const svgCategories = [
 import LastComponent from "../components/All/LastComponent";
 import CardComment from "../components/Integration/CardComment";
 const Integration = () => {
+	const [currentIndex, setCurrentIndex] = useState(0);
+	const maxIndex = updatedCards.length - 1;
+
 	return (
 		<div>
 			<section>
 				<IllustrationCenter
 					children={
 						<img
-							className="blur-3xl max-w-none"
+							className="blur-3xl max-w-none opacity-30"
 							src="https://preview.cruip.com/stellar/images/page-illustration.svg"
 							alt="Integrations-illustration"
 						></img>
@@ -165,8 +168,8 @@ const Integration = () => {
 				></IllustrationCenter>
 				<IllustrationCenter
 					children={
-						<div className="bg-purple-700 w-[400px] h-[200px] blur-3xl rounded-b-full flex justify-center ">
-							<div className="bg-purple-500 w-[80px] h-[40px] rounded-b-full"></div>
+						<div className="bg-emerald-600 w-[400px] h-[200px] blur-3xl rounded-b-full flex justify-center opacity-30">
+							<div className="bg-emerald-400 w-[80px] h-[40px] rounded-b-full"></div>
 						</div>
 					}
 					position="top-0"
@@ -200,54 +203,73 @@ const Integration = () => {
 			<section className="relative">
 				<FeatureContainers props="pb-[3rem] md:pb-[5rem] relative ">
 					<div className="flex *:min-w-[400px] overflow-scroll ">
-						<div className="bg-gradient-to-r from-black/40 to-transparent w-[200px] h-[calc(100%-160px)] left-0 absolute"></div>
+						<div className="bg-gradient-to-r from-black/60 via-black/40 to-transparent w-[200px] h-[calc(100%-160px)] left-0 absolute"></div>
 						{updatedCards.map((each, index) => {
 							return (
-								<div className="mr-4">
+								<div
+									key={index}
+									className="mr-4"
+									style={{
+										transform: `translateX(-${currentIndex * 416}px)`,
+										transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+									}}
+								>
 									<CardComment
-										key={index}
 										webappName={each.webappName}
 										description={each.description}
 										sourceImage={each.sourceImage}
 										listImageUrlOfPeople={each.listImageUrlOfPeople}
 										haveStar={each.haveStar}
 										numberpeopleLikes={each.numberpeopleLikes}
-									></CardComment>
+									/>
 								</div>
 							);
 						})}
-						<div className="bg-gradient-to-r from-transparent to-black/40 w-[100px] h-full right-0 absolute"></div>
+						<div className="bg-gradient-to-r from-transparent via-black/40 to-black/60 w-[100px] h-full right-0 absolute"></div>
 					</div>
 
 					<div className="mt-[2rem]">
-						<div className="flex justify-end">
-							<div className=" w-[3rem] h-[3rem] flex justify-center items-center">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									fill=""
-									viewBox="0 0 24 24"
-									stroke-width="1.5"
-									className={`size-6 stroke-white hover:!stroke-purple-500`}
-								>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
-									/>
-								</svg>
-							</div>
-							<div className="border w-[3rem] h-[3rem] flex justify-center items-center">
+						<div className="flex justify-end gap-3">
+							<div className="w-[3rem] cursor-pointer h-[3rem] flex justify-center items-center rounded-lg bg-gradient-to-br from-primary/10 to-primary/5 backdrop-blur-sm hover:from-primary/20 hover:to-primary/10 transition-all duration-300">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
 									viewBox="0 0 24 24"
-									stroke-width="1.5"
-									stroke="white"
-									className={`size-6  hover:!stroke-purple-500`}
+									strokeWidth="1.5"
+									className={`size-6 ${
+										currentIndex === 0 ? "stroke-gray-600" : "stroke-emerald-400"
+									} transition-colors duration-300 hover:stroke-emerald-300`}
+									onClick={() => {
+										if (currentIndex > 0) {
+											setCurrentIndex(currentIndex - 1);
+										}
+									}}
 								>
 									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+									/>
+								</svg>
+							</div>
+							<div className="w-[3rem] cursor-pointer h-[3rem] flex justify-center items-center rounded-lg bg-gradient-to-br from-primary/10 to-primary/5 backdrop-blur-sm hover:from-primary/20 hover:to-primary/10 transition-all duration-300">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+									strokeWidth="1.5"
+									className={`size-6 ${
+										currentIndex === maxIndex ? "stroke-gray-600" : "stroke-emerald-400"
+									} transition-colors duration-300 hover:stroke-emerald-300`}
+									onClick={() => {
+										if (currentIndex < maxIndex) {
+											setCurrentIndex(currentIndex + 1);
+										}
+									}}
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
 										d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
 									/>
 								</svg>
@@ -282,26 +304,25 @@ const Integration = () => {
 								}}
 							>
 								<div className="DocSearch-LoadingIndicator">
-									<label className="flex border-b border-gray-400 p-2">
+									<label className="flex border-b border-emerald-500/20 p-2">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											fill=""
 											viewBox="0 0 24 24"
-											stroke-width="1.5"
+											strokeWidth="1.5"
 											stroke="white"
-											className="size-6 mr-3"
+											className="size-6 mr-3 stroke-emerald-400"
 										>
 											<path
-												stroke-linecap="round"
-												stroke-linejoin="round"
+												strokeLinecap="round"
+												strokeLinejoin="round"
 												d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
 											/>
 										</svg>
 										<input
-											className="bg-transparent outline-none text-white"
-											placeholder="Search docs"
-											type="search"
-										/>
+											className="bg-transparent outline-none text-white w-full placeholder:text-gray-400"
+											placeholder="Search..."
+										></input>
 									</label>
 								</div>
 							</form>
@@ -320,24 +341,37 @@ const Integration = () => {
 					></LastComponent>
 				</Container>
 			</section>
+			<div className="w-full flex justify-center">
+				<div className="relative">
+					<div className="absolute w-full max-w-[600px] h-[400px] bg-emerald-500/20 rounded-full blur-3xl -z-10"></div>
+					<div className="bg-gradient-to-b from-black/40 to-black/80 backdrop-blur-sm border border-emerald-500/10 rounded-2xl p-8 max-w-[600px]">
+						<div className="flex flex-col gap-4">
+							<label className="flex border-b border-emerald-500/20 p-2">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									fill=""
+									viewBox="0 0 24 24"
+									strokeWidth="1.5"
+									stroke="white"
+									className="size-6 mr-3 stroke-emerald-400"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+									/>
+								</svg>
+								<input
+									className="bg-transparent outline-none text-white w-full placeholder:text-gray-400"
+									placeholder="Search..."
+								></input>
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };
 
 export default Integration;
-
-// ${
-// 										currentIndex === 4 ? "stroke-gray-500" : "stroke-white"
-// 									}
-
-// onClick={() => {
-// 										if (currentIndex === 0) {
-// 											setCurrentIndex(0);
-// 										} else {
-// 											setCurrentIndex(currentIndex - 1);
-// 										}
-// 									}}
-
-// ${
-// 										currentIndex === 0 ? "stroke-gray-500" : "stroke-white"
-// 									}

@@ -1,4 +1,3 @@
-
 const CardVariation = ({ keyText, feature, lastKey }: { keyText: string; feature: string; lastKey?: string }) => {
 	return (
 		<div className="p-4 bg-gray-800 rounded-2xl flex items-center">
@@ -10,7 +9,7 @@ const CardVariation = ({ keyText, feature, lastKey }: { keyText: string; feature
 					className="mr-4"
 				>
 					<path
-						className="fill-purple-600"
+						className="fill-primary"
 						fill-opacity=".24"
 						d="M10 0C4.5 0 0 4.5 0 10s4.5 10 10 10 10-4.5 10-10S15.5 0 10 0Z"
 					></path>

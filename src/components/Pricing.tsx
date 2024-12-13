@@ -1,4 +1,3 @@
-
 import CustomSpanPurpleGradient from "./All/CustomSpanPurpleGradient";
 import CustomLinkWithArrow from "./All/CustomLinkWithArrow";
 
@@ -66,7 +65,7 @@ const PriceWrapperTextFeature = ({
 						<p className="font-normal flex items-center max-md:hidden py-2">
 							{
 								<svg
-									className={`fill-purple-700 mr-3 ${displayOnlyKeyFeature ? "hidden" : undefined}`}
+									className={`fill-primary mr-3 ${displayOnlyKeyFeature ? "hidden" : undefined}`}
 									xmlns="http://www.w3.org/2000/svg"
 									width="12"
 									height="9"
@@ -78,7 +77,7 @@ const PriceWrapperTextFeature = ({
 						</p>
 						<p className="font-normal flex items-center md:hidden py-2">
 							<svg
-								className={`fill-purple-700 mr-3 ${
+								className={`fill-primary mr-3 ${
 									displayOnlyKeyFeature || !featureKey ? "hidden" : undefined
 								}`}
 								xmlns="http://www.w3.org/2000/svg"

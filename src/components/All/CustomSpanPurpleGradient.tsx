@@ -1,19 +1,23 @@
-
 import tw from "tailwind-styled-components";
-interface addlayout {
-	addlayout: string;
-}
-const SpanPurpleGradient = tw.span<addlayout>`text-transparent bg-clip-text bg-gradient-to-r from-[#a855f7] to-[#CBD5E1] ${(
-	p
-) => {
-	return p.addlayout;
-}}`;
 
-const CustomSpanPurpleGradient = ({ content, addlayout }: { content: string; addlayout: string }) => {
+interface CustomSpanGradientProps {
+	content: string;
+	addlayout?: string;
+}
+
+const CustomSpanPurpleGradient = ({ content, addlayout }: CustomSpanGradientProps) => {
 	return (
-		<div className="inline-flex">
-			<SpanPurpleGradient addlayout={addlayout}>{content}</SpanPurpleGradient>
-		</div>
+		<span
+			className={`inline-flex text-sm font-semibold py-1 px-3 
+				bg-gradient-to-r from-primary/20 to-primary/10 
+				rounded-full text-primary 
+				backdrop-blur-sm border border-primary/10 
+				hover:shadow-[0_0_10px_rgba(32,178,170,0.5)] 
+				transition-all duration-25 ease-in-out 
+				${addlayout || ""}`}
+		>
+			{content}
+		</span>
 	);
 };
 

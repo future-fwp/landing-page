@@ -1,14 +1,18 @@
 import tw from "tailwind-styled-components";
-interface ClassProps {
-	addlayout: string;
+
+interface CustomTitleProps {
+	content: string;
+	addlayout?: string;
 }
-const Title = tw.h1<ClassProps>`md:text-[3.5rem] md:leading-[1] font-extrabold  -tracking-[0.017em] text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-gray-200 to-gray-400 text-[2.75rem] leading-[1.1] ${(
-	p
-) => {
-	return p.addlayout;
-}}`;
-const CustomTitle = ({ content, addlayout }: { content: string; addlayout: string }) => {
-	return <Title addlayout={addlayout}>{content}</Title>;
+
+const CustomTitle = ({ content, addlayout }: CustomTitleProps) => {
+	return (
+		<h2
+			className={`text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] ${addlayout}`}
+		>
+			{content}
+		</h2>
+	);
 };
 
 export default CustomTitle;

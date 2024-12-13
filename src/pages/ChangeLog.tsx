@@ -3,6 +3,7 @@ import CustomSpanPurpleGradient from "../components/All/CustomSpanPurpleGradient
 import CustomTitle from "../components/All/CustomTitle";
 import CustomParagraphGrayText from "../components/All/CustomParagraph";
 import FeatureContainers from "../components/All/FeatureContainer";
+import RadialCanvas from "../components/Home/RadialCanvas";
 
 interface ChangeLogEntry {
     version: string;
@@ -46,44 +47,49 @@ const changeLogData: ChangeLogEntry[] = [
 
 const ChangeLog = () => {
     return (
-        <section className="py-20">
+        <section className="relative py-20 overflow-hidden">
+            <div className="absolute inset-0 z-0">
+                <RadialCanvas />
+            </div>
             <Container>
-                <div className="text-center mb-16">
-                    <CustomSpanPurpleGradient
-                        content="Updates"
-                        addlayout="pb-3"
-                    />
-                    <CustomTitle
-                        content="Product changelog"
-                        addlayout="pb-4"
-                    />
-                    <CustomParagraphGrayText
-                        content="Stay up to date with all our product changes"
-                        customparagraphgrayprops="text-center"
-                    />
-                </div>
+                <div className="relative z-10">
+                    <div className="text-center mb-16">
+                        <CustomSpanPurpleGradient
+                            content="Updates"
+                            addlayout="pb-3"
+                        />
+                        <CustomTitle
+                            content="Product changelog"
+                            addlayout="pb-4"
+                        />
+                        <CustomParagraphGrayText
+                            content="Stay up to date with all our product changes"
+                            customparagraphgrayprops="text-center"
+                        />
+                    </div>
 
-                <FeatureContainers props="max-w-3xl mx-auto">
-                    {changeLogData.map((entry, index) => (
-                        <div key={entry.version} className={`mb-12 ${index !== changeLogData.length - 1 ? 'border-b border-gray-800 pb-12' : ''}`}>
-                            <div className="flex items-center mb-4">
-                                <span className="text-purple-500 font-semibold mr-2">v{entry.version}</span>
-                                <span className="text-gray-500">• {entry.date}</span>
+                    <FeatureContainers props="max-w-3xl mx-auto backdrop-blur-sm bg-black/30 rounded-xl p-8">
+                        {changeLogData.map((entry, index) => (
+                            <div key={entry.version} className={`mb-12 ${index !== changeLogData.length - 1 ? 'border-b border-gray-800 pb-12' : ''}`}>
+                                <div className="flex items-center mb-4">
+                                    <span className="text-purple-500 font-semibold mr-2">v{entry.version}</span>
+                                    <span className="text-gray-500">• {entry.date}</span>
+                                </div>
+                                <ul className="space-y-4">
+                                    {entry.changes.map((change, idx) => (
+                                        <li key={idx} className="flex items-start">
+                                            <span className="mr-3 mt-1 text-purple-500">•</span>
+                                            <CustomParagraphGrayText
+                                                content={change}
+                                                customparagraphgrayprops="!text-left"
+                                            />
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
-                            <ul className="space-y-4">
-                                {entry.changes.map((change, idx) => (
-                                    <li key={idx} className="flex items-start">
-                                        <span className="mr-3 mt-1 text-purple-500">•</span>
-                                        <CustomParagraphGrayText
-                                            content={change}
-                                            customparagraphgrayprops="!text-left"
-                                        />
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
-                </FeatureContainers>
+                        ))}
+                    </FeatureContainers>
+                </div>
             </Container>
         </section>
     );

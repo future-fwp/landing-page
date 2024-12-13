@@ -1,4 +1,3 @@
-
 import tw from "tailwind-styled-components";
 
 interface LinkCustomProps {
@@ -12,7 +11,7 @@ const CustomLink = tw.a<LinkCustomProps>`
   ${(p) =>
 		p.$primary
 			? p.customforpricecomponent
-				? "bg-purple-500 text-white px-4 py-1.5"
+				? "bg-primary text-white px-4 py-1.5"
 				: "bg-gradient-to-r from-gray-200 via-white to-gray-200 px-4 py-1.5"
 			: "px-3 py-1 bg-black text-white"}
   ${(p) => p.addLayOut || ""}

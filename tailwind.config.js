@@ -5,7 +5,7 @@ export default {
 		extend: {
 			backgroundColor: {},
 			colors: {
-				primary: "#A855F7",
+				primary: "#20B2AA", // Seablue color (Light Sea Green)
 			},
 			screens: {
 				sm: "640px",

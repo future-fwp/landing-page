@@ -1,5 +1,3 @@
-
-
 function StarIcon({ isFilled }: { isFilled: boolean }) {
 	return (
 		<svg
@@ -8,7 +6,7 @@ function StarIcon({ isFilled }: { isFilled: boolean }) {
 			viewBox="0 0 24 24"
 			stroke-width="1.5"
 			stroke=""
-			className={!isFilled ? "size-5 fill-white" : "size-5 fill-purple-600"}
+			className={!isFilled ? "size-5 fill-white" : "size-5 fill-primary"}
 		>
 			<path
 				stroke-linecap="round"

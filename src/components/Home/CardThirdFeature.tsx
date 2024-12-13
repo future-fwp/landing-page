@@ -1,4 +1,3 @@
-
 import tw from "tailwind-styled-components";
 import CustomParagraphGrayText from "../All/CustomParagraph";
 import CustomLinkWithArrow from "../All/CustomLinkWithArrow";
@@ -41,7 +40,7 @@ const CardThirdFeature = ({
 				></CustomLinkWithArrow>
 			</div>
 			{currentGradient && (
-				<div className="absolute bottom-0 left-[calc(50%-100px)] bg-purple-600 -z-10 w-[200px] h-[100px] rounded-t-full blur-3xl"></div>
+				<div className="absolute bottom-0 left-[calc(50%-100px)] bg-primary -z-10 w-[200px] h-[100px] rounded-t-full blur-3xl"></div>
 			)}
 		</CardWrapper>
 	);

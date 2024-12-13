@@ -18,11 +18,11 @@ const IllustrationBlusTriangle = ({ position }: { position: string }) => {
 				>
 					<stop
 						offset="0%"
-						stop-color="#6366F1"
+						stop-color="#20B2AA"
 					></stop>
 					<stop
 						offset="100%"
-						stop-color="#6366F1"
+						stop-color="#20B2AA"
 						stop-opacity="0"
 					></stop>
 				</linearGradient>

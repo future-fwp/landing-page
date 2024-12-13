@@ -281,8 +281,8 @@ const Price = () => {
 
 				<IllustrationCenter
 					children={
-						<div className="bg-purple-700 w-[400px] h-[200px] blur-3xl rounded-b-full flex justify-center ">
-							<div className="bg-purple-500 w-[80px] h-[40px] rounded-b-full"></div>
+						<div className="bg-primary w-[400px] h-[200px] blur-3xl rounded-b-full flex justify-center ">
+							<div className="bg-primary w-[80px] h-[40px] rounded-b-full"></div>
 						</div>
 					}
 					position="top-0"
@@ -372,8 +372,8 @@ const Price = () => {
 				</Container>
 				<IllustrationCenter
 					children={
-						<div className="bg-purple-700 w-[300px] h-[150px] blur-3xl rounded-b-full flex justify-center ">
-							<div className="bg-purple-500 w-[80px] h-[40px] rounded-b-full"></div>
+						<div className="bg-primary w-[300px] h-[150px] blur-3xl rounded-b-full flex justify-center ">
+							<div className="bg-primary w-[80px] h-[40px] rounded-b-full"></div>
 						</div>
 					}
 					position="top-0 left-1/2"

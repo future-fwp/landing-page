@@ -1,11 +1,16 @@
-// import React, { ReactElement } from "react";
+import React from "react";
 
-// const Container = ({ children }: { children: ReactElement }) => {
-// 	return <div className="max-w-[72rem] mx-auto sm:px-6 px-4">{children}</div>;
-// };
+interface ContainerProps {
+	children: React.ReactNode;
+}
 
-// export default Container;
-import tw from "tailwind-styled-components";
+const Container = ({ children }: ContainerProps) => {
+	return (
+		<div className="relative w-full px-4 sm:px-6 lg:px-8 mx-auto max-w-[90rem] overflow-hidden">
+			<div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black/90 pointer-events-none" />
+			<div className="relative z-10">{children}</div>
+		</div>
+	);
+};
 
-const Container = tw.div`max-w-[72rem] mx-auto sm:px-6 px-4 relative`;
 export default Container;

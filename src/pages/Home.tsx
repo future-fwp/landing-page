@@ -19,7 +19,12 @@ import FeatureContainers from "../components/All/FeatureContainer";
 import CardTestimonial from "../components/Home/CardTestimonial";
 import LastComponent from "../components/All/LastComponent";
 import RadialCanvas from "../components/Home/RadialCanvas";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import gsap from "gsap";
+gsap.registerPlugin(ScrollTrigger);
 
+
+import GlowgreenTopGradient from "../components/All/GlowgreenTopGradient";
 const testimonials = [
 	{
 		imageUrl: "https://preview.cruip.com/stellar/images/testimonial-01.jpg",
@@ -382,6 +387,8 @@ const Home = () => {
 
 	const [position, setPosition] = React.useState({ x: 0, y: 0 }); // position glow mousepointer event ;;
 
+	const [positionSecondFeature, setPositionSecondFeature] = React.useState({ x: 0, y: 0 }); // position glow mousepointer event ;;
+
 	// Handle mouse movement
 	const handleMouseMove = (event: MouseEvent) => {
 		if (gridRef.current) {
@@ -400,6 +407,65 @@ const Home = () => {
 		}
 	};
 
+	const handleMouseMoveSecondFeature = (event: MouseEvent) => {
+		if (gridRef.current) {
+			const rect = gridRef.current.getBoundingClientRect();
+			const { clientX, clientY } = event;
+
+			// Calculate relative position
+			const x = clientX - rect.left;
+			const y = clientY - rect.top;
+
+			// Constrain the circle within the grid container
+			const constrainedX = Math.min(Math.max(x, 0), rect.width);
+			const constrainedY = Math.min(Math.max(y, 0), rect.height);
+
+			setPositionSecondFeature({ x: constrainedX, y: constrainedY });
+		}
+	};
+
+
+	React.useEffect(() => {
+        // Animate feature sections on scroll
+        gsap.utils.toArray('.feature-section').forEach((section: any) => {
+            gsap.fromTo(section, 
+                { 
+                    opacity: 0, 
+                    y: 100,
+                    scale: 0.9 
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+        });
+
+		// clear explain: make animation to appear element with duration 
+
+        // Parallax effect for illustrations
+        gsap.utils.toArray('.parallax-layer').forEach((layer: any) => {
+            gsap.to(layer, {
+                y: (i, el) => -ScrollTrigger.maxScroll(window) * el.dataset.speed,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: layer,
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+        });
+    }, []);
+
 	// Effect for adding and cleaning up event listener
 	React.useEffect(() => {
 		window.addEventListener("mousemove", handleMouseMove);
@@ -407,6 +473,14 @@ const Home = () => {
 			window.removeEventListener("mousemove", handleMouseMove);
 		};
 	}, []);
+
+	React.useEffect(() => {
+		window.addEventListener("mousemove", handleMouseMoveSecondFeature);
+		return () => {
+			window.removeEventListener("mousemove", handleMouseMoveSecondFeature);
+		};
+	}, []);
+
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	const [currentNameIndexForTestimonial, setcurrentNameIndexForTestimonial] = useState(0);
@@ -421,7 +495,7 @@ const Home = () => {
 							<div className="max-w-[48rem] mx-auto text-center">
 								<Link
 									to="#"
-									className="inline-flex rounded-full items-center border px-3 py-0.5 mb-6 text-white bg-[#a855f7]"
+									className="inline-flex rounded-full items-center border px-3 py-0.5 mb-6 text-white bg-primary"
 								>
 									API Studio is now in beta{" "}
 									<svg
@@ -492,27 +566,32 @@ const Home = () => {
 				{/* First Features */}
 				<section>
 					<Container>
-						{/* <div className="absolute inset-0 -z-10 transform overflow-hidden">
-							<div className="absolute top-0 transform -translate-x-[50%] left-1/2 ">
-								<img
-									src="https://preview.cruip.com/stellar/images/glow-top.svg"
-									alt="glow-image"
-									className="max-w-none h-auto  "
-									width={1476}
-									height={774}
-								/>
-							</div>
-						</div> */}
+						
 						<IllustrationCenter
 							position="top-0"
 							children={
-								<img
-									src="https://preview.cruip.com/stellar/images/glow-top.svg"
-									alt="glow-image"
-									className="max-w-none h-auto  "
-									width={1476}
-									height={774}
-								/>
+								<svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="1404" height="658">
+									<defs>
+										<path id="a" d="M0 0h2324v658H0z"/><path id="b" d="M0 0h2324v658H0z"/>
+										<radialGradient id="c" cx="50%" cy="0%" r="106.751%" fx="50%" fy="0%" gradientTransform="matrix(0 1 -.28313 0 .5 -.5)">
+											<stop offset="0%" stop-color="#4ADE80"/>
+											<stop offset="22.35%" stop-color="#22C55E" stop-opacity=".64"/>
+											<stop offset="100%" stop-color="#0F172A" stop-opacity="0"/>
+											</radialGradient>
+											<linearGradient id="d" x1="19.609%" x2="50%" y1="14.544%" y2="100%">
+												<stop offset="0%" stop-color="#FFF"/>
+												<stop offset="100%" stop-color="#FFF" stop-opacity="0"/>
+												</linearGradient>
+												<filter id="e" width="165.1%" height="170.3%" x="-32.5%" y="-35.1%" filterUnits="objectBoundingBox">
+													<feGaussianBlur in="SourceGraphic" stdDeviation="50"/>
+													</filter>
+													</defs>
+													<g fill="none" fill-rule="evenodd" transform="translate(-460)"><mask id="f" fill="#fff">
+														<use xlinkHref="#b"/>
+														</mask>
+														<use xlinkHref="#b" fill="url(#c)"/>
+														<path fill="url(#d)" d="m629-216 461 369-284 58z" filter="url(#e)" mask="url(#f)"/>
+														</g></svg>
 							}
 						></IllustrationCenter>
 						<FeatureContainers props="md:pt-[13rem] md:pb-[5rem] pt-[4rem] pb-[3rem] ">
@@ -531,7 +610,7 @@ const Home = () => {
 										content="Define access roles for the end-users, and extend your authorization capabilities to implement dynamic access control."
 										customparagraphgrayprops="mb-[2rem] "
 									></CustomParagraphGrayText>
-									<div className="mt-[2rem] max-w-[20rem] ">
+									<div className="mt-[2rem] max-w-[20rem] feature-section parallax-layer" data-speed= {0.1}>
 										{cards.map((each, index) => (
 											<CardFirstFeature
 												activeClick={each.activeClick}
@@ -545,7 +624,7 @@ const Home = () => {
 								</div>
 
 								{/* image-radial gradient  */}
-								<div className="md:w-[calc(100%-58.333%)] w-full border min-h-auto text-white">
+								<div className="md:w-[calc(100%-58.333%)] w-full  min-h-auto text-white">
 									<RadialCanvas />
 								</div>
 							</div>
@@ -608,14 +687,14 @@ const Home = () => {
 												top: `${position.y - 150}px`,
 												left: `${position.x - 150}px`,
 											}}
-											className="absolute bg-purple-600/20 blur-2xl w-[300px] h-[300px] rounded-full transition-transform duration-100 ease-out"
+											className="absolute bg-primary/60 blur-2xl w-[300px] h-[300px] rounded-full transition-all duration-[50ms] ease-linear transform will-change-transform"
 										></div>
 										<IllustrationBlusTriangle position="right-0"></IllustrationBlusTriangle>
 										<IllustrationCenter
 											position="bottom-0"
 											children={
-												<div className="bg-purple-400/40 flex items-end rounded-t-full blur-3xl justify-center w-[300px] h-[150px] ">
-													<div className="w-[150px] h-[75px] bg-purple-600  rounded-t-full"></div>
+												<div className="bg-primary/60 flex items-end rounded-t-full blur-3xl justify-center w-[300px] h-[150px] ">
+													<div className="w-[150px] h-[75px] bg-primary  rounded-t-full"></div>
 												</div>
 											}
 										></IllustrationCenter>
@@ -741,7 +820,7 @@ const Home = () => {
 									alt=""
 									className="max-w-full h-auto"
 								/>
-								<div className="bg-purple-600/80 -z-10 blur-3xl absolute w-[400px] h-[200px] rounded-t-full bottom-[24px] md:bottom-[40px] left-[calc(50%-200px)] "></div>
+								<div className="bg-primary -z-10 blur-3xl absolute w-[400px] h-[200px] rounded-t-full bottom-[24px] md:bottom-[40px] left-[calc(50%-200px)] "></div>
 							</div>
 						</FeatureContainers>
 					</Container>
@@ -827,7 +906,7 @@ const Home = () => {
 											<path
 												stroke-linecap="round"
 												stroke-linejoin="round"
-												d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+												d="M13.5 4.5L21 12m0 0-7.5 7.5M21 12H3"
 											/>
 										</svg>
 									</div>
@@ -919,9 +998,7 @@ const Home = () => {
 						<FeatureContainers props="md:py-[5rem] py-[3rem] ">
 							<IllustrationCenter
 								children={
-									<div className="bg-purple-700 w-[300px] h-[150px] blur-3xl rounded-b-full flex justify-center ">
-										<div className="bg-purple-500 w-[80px] h-[40px] rounded-b-full"></div>
-									</div>
+									<GlowgreenTopGradient/>
 								}
 								position="top-0 left-1/2"
 							></IllustrationCenter>
@@ -950,37 +1027,37 @@ All the lorem ipsum generators on the Internet tend to repeat predefined chunks 
 							<IllustrationCenter
 								children={
 									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="434"
-										height="427"
-										className="blur-[64px]"
-									>
-										<defs>
-											<linearGradient
-												id="bs5-a"
-												x1="19.609%"
-												x2="50%"
-												y1="14.544%"
-												y2="100%"
-											>
-												<stop
-													offset="0%"
-													stop-color="#A855F7"
-												></stop>
-												<stop
-													offset="100%"
-													stop-color="#6366F1"
-													stop-opacity="0"
-												></stop>
-											</linearGradient>
-										</defs>
-										<path
-											fill="url(#bs5-a)"
-											fill-rule="evenodd"
-											d="m661 736 461 369-284 58z"
-											transform="matrix(1 0 0 -1 -661 1163)"
-										></path>
-									</svg>
+    xmlns="http://www.w3.org/2000/svg"
+    width="434"
+    height="427"
+    className="blur-[64px]"
+>
+    <defs>
+        <linearGradient
+            id="seagreen-gradient"  // Changed to a more descriptive ID
+            x1="19.609%"
+            x2="50%"
+            y1="14.544%"
+            y2="100%"
+        >
+            <stop
+                offset="0%"
+                stop-color="#20B2AA"  // Base Light Sea Green
+            ></stop>
+            <stop
+                offset="100%"
+                stop-color="#20B2AA"  // Same color, but with transparency
+                stop-opacity="0"
+            ></stop>
+        </linearGradient>
+    </defs>
+    <path
+        fill="url(#seagreen-gradient)"  // Updated to match new ID
+        fill-rule="evenodd"
+        d="m661 736 461 369-284 58z"
+        transform="matrix(1 0 0 -1 -661 1163)"
+    ></path>
+</svg>
 								}
 								position="left-1/2 bottom-0"
 							/>
