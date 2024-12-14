@@ -1,4 +1,3 @@
-import React from "react";
 import Pricing from "../components/Pricing";
 import Container from "../components/ComponentsForAll/Container";
 import CustomHeroHeader from "../components/ComponentsForAll/CustomHeroHeader";

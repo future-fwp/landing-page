@@ -1,5 +1,3 @@
-import React from "react";
-
 interface FeatureContainersProps {
 	children: React.ReactNode;
 	props?: string;

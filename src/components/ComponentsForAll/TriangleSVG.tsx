@@ -1,4 +1,3 @@
-import React from 'react'; 
 export default function TriangleSVG() {
     return (<svg xmlns="http://www.w3.org/2000/svg" width="717" height="608" viewBox="0 0 717 608" fill="none">
         <g filter="url(#filter0_f_11_2)">

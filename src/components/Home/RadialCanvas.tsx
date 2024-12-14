@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 const RadialCanvas = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -86,9 +86,9 @@ const RadialCanvas = () => {
 
             update(canvasWidth: number, canvasHeight: number) {
                 // Update position with boundary checking
-                const centerX = canvasWidth / 2;
+                // const centerX = canvasWidth / 2;
                 const centerY = canvasHeight / 2;
-                const spreadWidth = canvasWidth;
+                // const spreadWidth = canvasWidth;
                 const spreadHeight = canvasHeight * 0.5;
 
                 this.x += this.velocityX;
@@ -103,6 +103,9 @@ const RadialCanvas = () => {
             }
 
             draw(ctx: CanvasRenderingContext2D) {
+                if(!ctx) {
+                    return ;
+                }
                 drawStar(this.x, this.y, this.size, `rgba(255, 255, 255, ${this.opacity})`);
             }
         }

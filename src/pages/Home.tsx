@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState} from "react";
 import Container from "../components/ComponentsForAll/Container";
 import { Link } from "react-router-dom";
 import CustomTitle from "../components/ComponentsForAll/CustomTitle";
@@ -382,13 +382,13 @@ const featureforFourthComponent = [
 ];
 
 const Home = () => {
-	const [cards, setCards] = React.useState(CardForFirstFeatureArray);
+	const [cards, setCards] = useState(CardForFirstFeatureArray);
 
-	const gridRef = React.useRef<HTMLDivElement>(null);
+	const gridRef = React.createRef<HTMLDivElement | null>(null);
 
-	const [position, setPosition] = React.useState({ x: 0, y: 0 }); // position glow mousepointer event ;;
+	const [position, setPosition] = useState({ x: 0, y: 0 }); // position glow mousepointer event ;;
 
-	const [positionSecondFeature, setPositionSecondFeature] = React.useState({ x: 0, y: 0 }); // position glow mousepointer event ;;
+	const [positionSecondFeature, setPositionSecondFeature] = useState({ x: 0, y: 0 }); // position glow mousepointer event ;;
 
 	// Handle mouse movement
 	const handleMouseMove = (event: MouseEvent) => {
