@@ -1,11 +1,11 @@
 import { useState } from "react";
-import Container from "../components/All/Container";
-import FeatureContainers from "../components/All/FeatureContainer";
-import CustomSpanPurpleGradient from "../components/All/CustomSpanPurpleGradient";
-import CustomTitle from "../components/All/CustomTitle";
-import IllustrationCenter from "../components/All/IllustrationCenter";
-import CustomParagraphGrayText from "../components/All/CustomParagraph";
-import CustomHeroHeader from "../components/All/CustomHeroHeader";
+import Container from "../components/ComponentsForAll/Container";
+import FeatureContainers from "../components/ComponentsForAll/FeatureContainer";
+import CustomSpanGreenGradient from "../components/ComponentsForAll/CustomSpanGreenGradient";
+import CustomTitle from "../components/ComponentsForAll/CustomTitle";
+import IllustrationCenter from "../components/ComponentsForAll/IllustrationCenter";
+import CustomParagraphGrayText from "../components/ComponentsForAll/CustomParagraph";
+import CustomHeroHeader from "../components/ComponentsForAll/CustomHeroHeader";
 import GroupLayOut from "../components/Integration/GroupLayOut";
 const cardData = [
 	{
@@ -147,7 +147,7 @@ const svgCategories = [
 	},
 ];
 
-import LastComponent from "../components/All/LastComponent";
+import LastComponent from "../components/ComponentsForAll/LastComponent";
 import CardComment from "../components/Integration/CardComment";
 const Integration = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -189,11 +189,11 @@ const Integration = () => {
 									content="Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever."
 								></CustomParagraphGrayText>
 							}
-							CustomSpanPurpleGradient={
-								<CustomSpanPurpleGradient
+							CustomSpanGreenGradient={
+								<CustomSpanGreenGradient
 									addlayout="pb-3"
 									content="Integrations & Add-ons"
-								></CustomSpanPurpleGradient>
+								></CustomSpanGreenGradient>
 							}
 							addlayout="!max-w-none"
 						></CustomHeroHeader>

@@ -1,4 +1,4 @@
-import tw from "tailwind-styled-components";
+
 
 interface CustomParagraphProps {
 	content: string;

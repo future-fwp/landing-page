@@ -51,15 +51,22 @@ The app will be available at `http://localhost:5173`
 
 ```
 src/
-├── components/         # Reusable components
-│   ├── All/           # Common components
-│   ├── Home/          # Home page components
-│   └── Integration/   # Integration page components
-├── pages/             # Page components
-├── assets/            # Static assets
+├── assets/           # Static assets
+├── components/       # Reusable UI components
+│   └── All/          # Shared components
+├── data/             # Centralized data management
+│   └── index.ts      # Exports for project-wide data
+├── pages/            # Page-level components
+│   ├── Home.tsx
+│   └── Price.tsx
 ├── App.tsx           # Main application component
-└── main.tsx         # Application entry point
+└── main.tsx          # Entry point
 ```
+
+### 🔍 Recent Refactoring
+- **Data Consolidation**: Centralized project data in `/src/data/index.ts`
+- Improved code organization and maintainability
+- Simplified data management across components
 
 ## 🎨 Key Components
 
@@ -92,3 +99,10 @@ This project is MIT licensed.
 This project is inspired by and based on the [Stellar template](https://cruip.com/demos/stellar/) from Cruip.com. The original design and concept belong to Cruip, and we've recreated it using React and TypeScript as a learning exercise.
 
 Original template: [https://cruip.com/demos/stellar/](https://cruip.com/demos/stellar/)
+
+
+
+### 🔍 Recent Refactoring
+- **Data Consolidation**: Centralized project data in `/src/data/index.ts`
+- Improved code organization and maintainability
+- Simplified data management across components

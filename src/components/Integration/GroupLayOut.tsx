@@ -1,6 +1,6 @@
 
 import CustomMedianHeadingIntegration from "./CustomMedianHeadingIntegration";
-import GridLayOut from "../All/GridLayOut";
+import GridLayOut from "../ComponentsForAll/GridLayOut";
 import CardComment from "./CardComment";
 const GroupLayOut = () => {
 	return (

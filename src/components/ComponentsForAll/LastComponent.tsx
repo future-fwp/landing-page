@@ -1,7 +1,7 @@
 import FeatureContainers from "./FeatureContainer";
 import Container from "./Container";
 import IllustrationCenter from "./IllustrationCenter";
-import CustomSpanPurpleGradient from "./CustomSpanPurpleGradient";
+import CustomSpanGreenGradient from "./CustomSpanGreenGradient";
 import CustomSubtitle from "./CustomSubtitle";
 import CustomParagraphGrayText from "./CustomParagraph";
 import CustomLinkWithArrow from "./CustomLinkWithArrow";
@@ -37,10 +37,10 @@ const LastComponent = ({
 					></IllustrationCenter>
 					<div className="flex flex-col items-center justify-center">
 						<div className="">
-							<CustomSpanPurpleGradient
+							<CustomSpanGreenGradient
 								content={contentforSpanPurpleGradient}
 								addlayout="pb-3 "
-							></CustomSpanPurpleGradient>
+							></CustomSpanGreenGradient>
 						</div>
 						<div>
 							<CustomSubtitle

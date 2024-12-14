@@ -2,10 +2,14 @@ import React, { useRef, useEffect } from 'react';
 
 const RadialCanvas = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+
 
     useEffect(() => {
         const canvas = canvasRef.current;
-        if (!canvas) return;
+        const container = containerRef.current;
+        if (!canvas || !container) return;
 
         // Ensure canvas is full width and height
         canvas.width = window.innerWidth;
@@ -181,10 +185,10 @@ const RadialCanvas = () => {
     }, []);
 
     return (
-        <div className="fixed inset-0 pointer-events-none">
+        <div ref = {containerRef} className="w-full pointer-events-none">
             <canvas 
                 ref={canvasRef}
-                className="w-full h-full absolute top-0 left-0"
+                className="w-full h-full "
                 style={{ zIndex: -1 }}
             />
         </div>

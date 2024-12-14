@@ -1,19 +1,19 @@
 import React from "react";
 import Pricing from "../components/Pricing";
-import Container from "../components/All/Container";
-import CustomHeroHeader from "../components/All/CustomHeroHeader";
-import FeatureContainers from "../components/All/FeatureContainer";
-import CustomTitle from "../components/All/CustomTitle";
-import CustomSpanPurpleGradient from "../components/All/CustomSpanPurpleGradient";
-import CustomParagraphGrayText from "../components/All/CustomParagraph";
-import IllustrationCenter from "../components/All/IllustrationCenter";
-import CustomSubtitle from "../components/All/CustomSubtitle";
+import Container from "../components/ComponentsForAll/Container";
+import CustomHeroHeader from "../components/ComponentsForAll/CustomHeroHeader";
+import FeatureContainers from "../components/ComponentsForAll/FeatureContainer";
+import CustomTitle from "../components/ComponentsForAll/CustomTitle";
+import CustomSpanGreenGradient from "../components/ComponentsForAll/CustomSpanGreenGradient";
+import CustomParagraphGrayText from "../components/ComponentsForAll/CustomParagraph";
+import IllustrationCenter from "../components/ComponentsForAll/IllustrationCenter";
+import CustomSubtitle from "../components/ComponentsForAll/CustomSubtitle";
 import CardVariation from "../components/Price/CardVariation";
 import CardCustomer from "../components/Price/CardCustomer";
-import GridLayOut from "../components/All/GridLayOut";
+import GridLayOut from "../components/ComponentsForAll/GridLayOut";
 import CardFaq from "../components/Price/CardFaq";
 
-import LastComponent from "../components/All/LastComponent";
+import LastComponent from "../components/ComponentsForAll/LastComponent";
 const images = [
 	{
 		src: "https://preview.cruip.com/stellar/images/pricing-icon-01.svg",
@@ -218,11 +218,11 @@ const Price = () => {
 									customparagraphgrayprops="max-w-[48rem] mx-auto"
 								/>
 							}
-							CustomSpanPurpleGradient={
-								<CustomSpanPurpleGradient
+							CustomSpanGreenGradient={
+								<CustomSpanGreenGradient
 									content="The security first platform"
 									addlayout=""
-								></CustomSpanPurpleGradient>
+								></CustomSpanGreenGradient>
 							}
 						/>
 						<FeatureContainers props="relative pb-[3rem] md:pb-[5rem] relative">
@@ -389,11 +389,11 @@ const Price = () => {
 									addlayout="pb-[1rem] "
 								/>
 							}
-							CustomSpanPurpleGradient={
-								<CustomSpanPurpleGradient
+							CustomSpanGreenGradient={
+								<CustomSpanGreenGradient
 									content="Getting started with Stellar"
 									addlayout="pb-[0.75rem]"
-								></CustomSpanPurpleGradient>
+								></CustomSpanGreenGradient>
 							}
 						></CustomHeroHeader>
 						<div className="md:flex md:flex-wrap md:gap-4">

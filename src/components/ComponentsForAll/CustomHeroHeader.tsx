@@ -9,18 +9,18 @@ const ContainerHeroHeader = tw.div<addlayout>`max-w-[48rem] mx-auto md:pb-[5rem]
 const CustomHeroHeader = ({
 	CustomTitle,
 	CustomParagraphText,
-	CustomSpanPurpleGradient,
+	CustomSpanGreenGradient,
 	addlayout,
 }: {
 	CustomTitle: ReactElement;
 	addlayout?: string;
 
 	CustomParagraphText?: ReactElement;
-	CustomSpanPurpleGradient?: ReactElement;
+	CustomSpanGreenGradient?: ReactElement;
 }) => {
 	return (
 		<ContainerHeroHeader addlayout={addlayout}>
-			{CustomSpanPurpleGradient}
+			{CustomSpanGreenGradient}
 			{CustomTitle}
 			{CustomParagraphText}
 		</ContainerHeroHeader>

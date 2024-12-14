@@ -1,6 +1,6 @@
 import tw from "tailwind-styled-components";
-import CustomParagraphGrayText from "../All/CustomParagraph";
-import CustomLinkWithArrow from "../All/CustomLinkWithArrow";
+import CustomParagraphGrayText from "../ComponentsForAll/CustomParagraph";
+import CustomLinkWithArrow from "../ComponentsForAll/CustomLinkWithArrow";
 const CardWrapper = tw.div`p-6 min-w-[340px] border border-gray-600 mr-[1.5rem] rounded-lg relative`;
 const CardThirdFeature = ({
 	sourceImage,

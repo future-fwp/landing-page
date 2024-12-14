@@ -1,8 +1,8 @@
-import Container from "../components/All/Container";
-import CustomSpanPurpleGradient from "../components/All/CustomSpanPurpleGradient";
-import CustomTitle from "../components/All/CustomTitle";
-import CustomParagraphGrayText from "../components/All/CustomParagraph";
-import FeatureContainers from "../components/All/FeatureContainer";
+import Container from "../components/ComponentsForAll/Container";
+import CustomSpanGreenGradient from "../components/ComponentsForAll/CustomSpanGreenGradient";
+import CustomTitle from "../components/ComponentsForAll/CustomTitle";
+import CustomParagraphGrayText from "../components/ComponentsForAll/CustomParagraph";
+import FeatureContainers from "../components/ComponentsForAll/FeatureContainer";
 import RadialCanvas from "../components/Home/RadialCanvas";
 
 interface ChangeLogEntry {
@@ -54,7 +54,7 @@ const ChangeLog = () => {
             <Container>
                 <div className="relative z-10">
                     <div className="text-center mb-16">
-                        <CustomSpanPurpleGradient
+                        <CustomSpanGreenGradient
                             content="Updates"
                             addlayout="pb-3"
                         />

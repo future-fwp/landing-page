@@ -1,5 +1,5 @@
 
-import CustomMedianHeading from "../All/CustomMedianHeading";
+import CustomMedianHeading from "../ComponentsForAll/CustomMedianHeading";
 const CardTestimonial = ({
 	imageUrl,
 	altImage,

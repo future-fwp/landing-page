@@ -1,30 +1,31 @@
 import React, {useState} from "react";
-import Container from "../components/All/Container";
+import Container from "../components/ComponentsForAll/Container";
 import { Link } from "react-router-dom";
-import CustomTitle from "../components/All/CustomTitle";
-import CustomSubtitle from "../components/All/CustomSubtitle";
-import CustomParagraphGrayText from "../components/All/CustomParagraph";
-import CustomLinkWithArrow from "../components/All/CustomLinkWithArrow";
+import CustomTitle from "../components/ComponentsForAll/CustomTitle";
+import CustomSubtitle from "../components/ComponentsForAll/CustomSubtitle";
+import CustomParagraphGrayText from "../components/ComponentsForAll/CustomParagraph";
+import CustomLinkWithArrow from "../components/ComponentsForAll/CustomLinkWithArrow";
 import tw from "tailwind-styled-components";
-import CustomSpanPurpleGradient from "../components/All/CustomSpanPurpleGradient";
-import CustomMedianHeading from "../components/All/CustomMedianHeading";
+import CustomSpanGreenGradient from "../components/ComponentsForAll/CustomSpanGreenGradient";
+import CustomMedianHeading from "../components/ComponentsForAll/CustomMedianHeading";
 import CardFirstFeature from "../components/Home/CardFirstFeature";
-import CustomHeroHeader from "../components/All/CustomHeroHeader";
+import CustomHeroHeader from "../components/ComponentsForAll/CustomHeroHeader";
 import CardThirdFeature from "../components/Home/CardThirdFeature";
 import CardSecondandFourthFeatureSVG from "../components/Home/CardSecondandFourthFeatureSVG";
 import Pricing from "../components/Pricing";
-import IllustrationCenter from "../components/All/IllustrationCenter";
+import IllustrationCenter from "../components/ComponentsForAll/IllustrationCenter";
 import IllustrationBlusTriangle from "../components/Home/IllustrationBlusTriangle";
-import FeatureContainers from "../components/All/FeatureContainer";
+import FeatureContainers from "../components/ComponentsForAll/FeatureContainer";
 import CardTestimonial from "../components/Home/CardTestimonial";
-import LastComponent from "../components/All/LastComponent";
+import LastComponent from "../components/ComponentsForAll/LastComponent";
 import RadialCanvas from "../components/Home/RadialCanvas";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from "gsap";
 gsap.registerPlugin(ScrollTrigger);
 
 
-import GlowgreenTopGradient from "../components/All/GlowgreenTopGradient";
+import GlowgreenTopGradient from "../components/ComponentsForAll/GlowgreenTopGradient";
+import TriangleSVG from "../components/ComponentsForAll/TriangleSVG";
 const testimonials = [
 	{
 		imageUrl: "https://preview.cruip.com/stellar/images/testimonial-01.jpg",
@@ -595,13 +596,13 @@ const Home = () => {
 							}
 						></IllustrationCenter>
 						<FeatureContainers props="md:pt-[13rem] md:pb-[5rem] pt-[4rem] pb-[3rem] ">
-							<div className="flex flex-col-reverse md:flex-row  md:justify-between">
+							<div className="flex flex-col-reverse md:flex-row items-center md:justify-between">
 								{/* content  */}
 								<div className="md:w-[58.333%] w-full max-md:text-center">
-									<CustomSpanPurpleGradient
+									<CustomSpanGreenGradient
 										content="The security first platform"
 										addlayout={"pb-[0.75rem]"}
-									></CustomSpanPurpleGradient>
+									></CustomSpanGreenGradient>
 									<CustomMedianHeading
 										content="Simplify your security with authentication services"
 										addlayout="pb-[0.75rem] "
@@ -624,7 +625,7 @@ const Home = () => {
 								</div>
 
 								{/* image-radial gradient  */}
-								<div className="md:w-[calc(100%-58.333%)] w-full  min-h-auto text-white">
+								<div className="md:w-[calc(58.33%)] w-full min-h-auto text-white">
 									<RadialCanvas />
 								</div>
 							</div>
@@ -764,38 +765,7 @@ const Home = () => {
 						{/* Second Feature */}
 						<IllustrationCenter
 							children={
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="434"
-									height="427"
-									className="blur-3xl"
-								>
-									<defs>
-										<linearGradient
-											id="bs3-a"
-											x1="19.609%"
-											x2="50%"
-											y1="14.544%"
-											y2="100%"
-										>
-											<stop
-												offset="0%"
-												stop-color="#6366F1"
-											></stop>
-											<stop
-												offset="100%"
-												stop-color="#6366F1"
-												stop-opacity="0"
-											></stop>
-										</linearGradient>
-									</defs>
-									<path
-										fill="url(#bs3-a)"
-										fill-rule="evenodd"
-										d="m410 0 461 369-284 58z"
-										transform="matrix(1 0 0 -1 -410 427)"
-									></path>
-								</svg>
+								<TriangleSVG/>
 							}
 							position="top-0"
 						></IllustrationCenter>
@@ -830,11 +800,11 @@ const Home = () => {
 						{/* Third Feature */}
 						<FeatureContainers props="md:pt-[5rem] md:pt-[3rem]">
 							<CustomHeroHeader
-								CustomSpanPurpleGradient={
-									<CustomSpanPurpleGradient
+								CustomSpanGreenGradient={
+									<CustomSpanGreenGradient
 										content="The security first platform"
 										addlayout="pb-[2rem] "
-									></CustomSpanPurpleGradient>
+									></CustomSpanGreenGradient>
 								}
 								CustomTitle={
 									<CustomSubtitle
@@ -919,38 +889,7 @@ const Home = () => {
 					{/* Fourth Feature */}
 					<IllustrationCenter
 						children={
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="434"
-								height="427"
-								className="blur-3xl"
-							>
-								<defs>
-									<linearGradient
-										id="bs4-a"
-										x1="19.609%"
-										x2="50%"
-										y1="14.544%"
-										y2="100%"
-									>
-										<stop
-											offset="0%"
-											stop-color="#A855F7"
-										></stop>
-										<stop
-											offset="100%"
-											stop-color="#6366F1"
-											stop-opacity="0"
-										></stop>
-									</linearGradient>
-								</defs>
-								<path
-									fill="url(#bs4-a)"
-									fill-rule="evenodd"
-									d="m0 0 461 369-284 58z"
-									transform="matrix(1 0 0 -1 0 427)"
-								></path>
-							</svg>
+							<TriangleSVG/>
 						}
 						position="top-0 !left-[200px] min-[1152px]:!left-[calc((100vw-1152px)/2+200px)]" // custom position of left
 					></IllustrationCenter>
@@ -973,10 +912,10 @@ const Home = () => {
 										className="py-4 first:pt-0"
 										key={each.category}
 									>
-										<CustomSpanPurpleGradient
+										<CustomSpanGreenGradient
 											content={each.category}
 											addlayout="pb-[2rem]"
-										></CustomSpanPurpleGradient>
+										></CustomSpanGreenGradient>
 
 										<div className="grid md:grid-cols-3 gap-6">
 											{each.features.map((each) => (
@@ -1016,11 +955,11 @@ All the lorem ipsum generators on the Internet tend to repeat predefined chunks 
 										addlayout="pb-[1rem] "
 									></CustomSubtitle>
 								}
-								CustomSpanPurpleGradient={
-									<CustomSpanPurpleGradient
+								CustomSpanGreenGradient={
+									<CustomSpanGreenGradient
 										content="Pricing plans"
 										addlayout=""
-									></CustomSpanPurpleGradient>
+									></CustomSpanGreenGradient>
 								}
 							></CustomHeroHeader>
 							<Pricing></Pricing>

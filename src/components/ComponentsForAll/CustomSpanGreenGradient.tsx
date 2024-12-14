@@ -1,11 +1,9 @@
-import tw from "tailwind-styled-components";
-
 interface CustomSpanGradientProps {
 	content: string;
 	addlayout?: string;
 }
 
-const CustomSpanPurpleGradient = ({ content, addlayout }: CustomSpanGradientProps) => {
+const CustomSpanGreenGradient = ({ content, addlayout }: CustomSpanGradientProps) => {
 	return (
 		<span
 			className={`inline-flex text-sm font-semibold py-1 px-3 
@@ -21,4 +19,4 @@ const CustomSpanPurpleGradient = ({ content, addlayout }: CustomSpanGradientProp
 	);
 };
 
-export default CustomSpanPurpleGradient;
+export default CustomSpanGreenGradient;
