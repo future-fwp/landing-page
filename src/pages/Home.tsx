@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState,useRef, createRef} from "react";
 import Container from "../components/ComponentsForAll/Container";
 import { Link } from "react-router-dom";
 import CustomTitle from "../components/ComponentsForAll/CustomTitle";
@@ -20,7 +20,7 @@ import CardTestimonial from "../components/Home/CardTestimonial";
 import LastComponent from "../components/ComponentsForAll/LastComponent";
 import RadialCanvas from "../components/Home/RadialCanvas";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import gsap from "gsap";
+import {gsap} from "gsap";
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -257,7 +257,7 @@ const featureforFourthComponent = [
 						width="16"
 						height="16"
 					>
-						<path d="M13 16c-.153 0-.306-.035-.447-.105l-3.851-1.926c-.231.02-.465.031-.702.031-4.411 0-8-3.14-8-7s3.589-7 8-7 8 3.14 8 7c0 1.723-.707 3.351-2 4.63V15a1.003 1.003 0 0 1-1 1Zm-4.108-4.054c.155 0 .308.036.447.105L12 13.382v-2.187c0-.288.125-.562.341-.752C13.411 9.506 14 8.284 14 7c0-2.757-2.691-5-6-5S2 4.243 2 7s2.691 6 6 6 6-2.7 6-6c0-.6.4-1 1-1Z"></path>
+						<path d="M13 16c-.153 0-.306-.035-.447-.105l-3.851-1.926c-.231.02-.465.031-.702.031-4.411 0-8-3.14-8-7s3.589-7 8-7 8 3.14 8 7c0 1.723-.707 3.351-2 4.63V15a1.003 1.003 0 0 1-1 1Zm-4.108-4.054c.155 0 .308.036.447.105L12 13.382v-2.187c0-.288.125-.562.341-.752C13.411 9.506 14 8.284 14 7c0-2.757-2.691-5-6-5S2 4.243 2 7s2.243 5 5 5 5-2.243 5-5-2.243-5-5-5ZM15.707 14.293 13.314 11.9a8.019 8.019 0 0 1-1.414 1.414l2.393 2.393a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414Z"></path>
 					</svg>
 				),
 				description: "Login box must find the right balance for the user convenience, privacy, and security.",
@@ -426,6 +426,125 @@ const Home = () => {
 	};
 
 
+	// GSAP Animation Setup
+	React.useEffect(() => {
+		gsap.registerPlugin(ScrollTrigger);
+
+		// Add data attributes to elements you want to animate
+		const apiSecuritySection = document.querySelector('.scrollTrigger-section');
+		
+		if (apiSecuritySection) {
+			// Add data attributes to text elements
+			const heroTitle = apiSecuritySection.querySelector('h1');
+			const heroSubtitle = apiSecuritySection.querySelector('p');
+			const heroLink = apiSecuritySection.querySelector('a');
+
+			if (heroTitle) heroTitle.setAttribute('data-animation-text', 'true');
+			if (heroSubtitle) heroSubtitle.setAttribute('data-animation-text', 'true');
+			if (heroLink) heroLink.setAttribute('data-animation-text', 'true');
+
+			// Create a glow element
+			const glowElement = document.createElement('div');
+			glowElement.classList.add('absolute', 'bottom-0', 'left-1/2', 'transform', '-translate-x-1/2', 'w-64', 'h-64', 'bg-blue-500', 'rounded-full', 'opacity-30', 'blur-3xl');
+			glowElement.setAttribute('data-animation-glow', 'true');
+			apiSecuritySection.appendChild(glowElement);
+
+			const textElements = apiSecuritySection.querySelectorAll('[data-animation-text]');
+			const glowElementQuery = apiSecuritySection.querySelector('[data-animation-glow]');
+
+			console.log('Text Elements:', textElements);
+			console.log('Glow Element:', glowElementQuery);
+
+			// Text Animation
+			gsap.fromTo(textElements, 
+				{ 
+					opacity: 0, 
+					y: 50,
+					scale: 0.9 
+				},
+				{
+					opacity: 1,
+					y: 0,
+					scale: 1,
+					duration: 1,
+					stagger: 0.3,
+					ease: 'power2.out',
+					scrollTrigger: {
+						trigger: apiSecuritySection,
+						toggleActions: 'play none none reverse'
+					}
+				}
+			);
+
+			// Glow Animation
+			if (glowElementQuery) {
+				gsap.fromTo(glowElementQuery,
+					{
+						opacity: 0,
+						scale: 0.5,
+						y: 100
+					},
+					{
+						opacity: 0.3,
+						scale: 1,
+						y: 0,
+						duration: 1.5,
+						ease: 'power2.out',
+						scrollTrigger: {
+							trigger: apiSecuritySection,
+							toggleActions: 'play none none reverse'
+						}
+					}
+				);
+			}
+		} else {
+			console.error('API Security Section not found');
+		}
+	}, []);
+
+
+	// Slide up animation for "smarter and faster" sections
+	React.useEffect(() => {
+		gsap.registerPlugin(ScrollTrigger);
+
+		// Find all sections with "smarter and faster" text
+		const smarterFasterSections = document.querySelectorAll('section');
+		
+		smarterFasterSections.forEach((section) => {
+			// Check if section contains "smarter and faster" text
+			const containsSmarterFaster = section.textContent?.toLowerCase().includes('Faster.Smarter.');
+			
+			if (containsSmarterFaster) {
+				// Select all direct children elements to animate
+				const elementsToAnimate = section.querySelectorAll('h1, h2, h3, p, div, span, a');
+				
+				gsap.fromTo(elementsToAnimate, 
+					{ 
+						opacity: 0, 
+						y: 50,
+						scale: 0.95
+					},
+					{
+						opacity: 1,
+						y: 0,
+						scale: 1,
+						duration: 1,
+						stagger: 0.2,
+						ease: 'power2.out',
+						scrollTrigger: {
+							trigger: section,
+							start: 'top bottom',
+							end: 'bottom top',
+							scrub: true,
+							toggleActions: 'play none none reverse'
+						}
+					}
+				);
+			}
+		});
+	}, []);
+
+
 	React.useEffect(() => {
         // Animate feature sections on scroll
         gsap.utils.toArray('.feature-section').forEach((section: any) => {
@@ -490,10 +609,10 @@ const Home = () => {
 		<>
 			<main className="relative">
 				{/* Home Page */}
-				<section className="relative">
+				<section className="relative scrollTrigger-section">
 					<Container>
 						<div className="md:pt-[13rem] md:pb-[8rem] pt-[4rem] pb-[3rem]">
-							<div className="max-w-[48rem] mx-auto text-center">
+							<div className="max-w-[48rem] mx-auto text-center ">
 								<Link
 									to="#"
 									className="inline-flex rounded-full items-center border px-3 py-0.5 mb-6 text-white bg-primary"
@@ -601,7 +720,7 @@ const Home = () => {
 								<div className="md:w-[58.333%] w-full max-md:text-center">
 									<CustomSpanGreenGradient
 										content="The security first platform"
-										addlayout={"pb-[0.75rem]"}
+										addlayout={"mb-[0.75rem]"}
 									></CustomSpanGreenGradient>
 									<CustomMedianHeading
 										content="Simplify your security with authentication services"
@@ -803,7 +922,7 @@ const Home = () => {
 								CustomSpanGreenGradient={
 									<CustomSpanGreenGradient
 										content="The security first platform"
-										addlayout="pb-[2rem] "
+										addlayout="mb-[2rem] "
 									></CustomSpanGreenGradient>
 								}
 								CustomTitle={
@@ -914,7 +1033,7 @@ const Home = () => {
 									>
 										<CustomSpanGreenGradient
 											content={each.category}
-											addlayout="pb-[2rem]"
+											addlayout="mb-[2rem]"
 										></CustomSpanGreenGradient>
 
 										<div className="grid md:grid-cols-3 gap-6">
@@ -1004,8 +1123,8 @@ All the lorem ipsum generators on the Internet tend to repeat predefined chunks 
 					</Container>
 				</section>
 				<section>
-					<div className="md:px-6 px-4 mx-auto max-w-[48rem] ">
-						<FeatureContainers props="md:pb-[5rem] pb-[3rem] ">
+					<div className="md:px-6 px-4 mx-auto ">
+						<FeatureContainers props="md:pb-[5rem] pb-[3rem] bg-black ">
 							{testimonials.map((each) => {
 								return (
 									<>

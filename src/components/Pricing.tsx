@@ -1,5 +1,8 @@
 import CustomSpanGreenGradient from "./ComponentsForAll/CustomSpanGreenGradient";
 import CustomLinkWithArrow from "./ComponentsForAll/CustomLinkWithArrow";
+import {gsap} from 'gsap';
+import React from 'react'; 
+import { ScrollTrigger } from "gsap/all";
 
 
 
@@ -17,8 +20,42 @@ const PlanHeader = ({
 	
 	customforpricecomponent?: boolean;
 }) => {
+	// Pricing Cards Animation
+	// Pricing Cards Animation
+	React.useEffect(() => {
+		gsap.registerPlugin(ScrollTrigger);
+	
+		// Select all pricing cards
+		const pricingCards = document.querySelectorAll('[data-pricing-card]');
+		
+		pricingCards.forEach((card, index) => {
+		  gsap.fromTo(
+			card,
+			{ 
+			  opacity: 0, 
+			  x: -100 * (index + 1), // Stagger from left with increasing offset
+			  y: 50,
+			  scale: 0.9
+			},
+			{
+			  opacity: 1,
+			  x: 0,
+			  y: 0,
+			  scale: 1,
+			  duration: 1,
+			  delay: index * 0.3, // Stagger delay
+			  ease: 'power2.out',
+			  scrollTrigger: {
+				trigger: card,
+				start: 'top bottom-=100', // Trigger slightly before card is fully in view
+				toggleActions: 'play none none none' // Play animation once when in view
+			  }
+			}
+		  );
+		});
+	  }, []);
 	return (
-		<div className="p-6 border">
+		<div className="p-6 ">
 			<div className="text-[#475569] pb-4 mb-4">
 				{!isHeader ? <CustomSpanGreenGradient
 					content={content}
@@ -56,7 +93,7 @@ const PriceWrapperTextFeature = ({
 	displayOnlyKeyFeature?: boolean;
 }) => {
 	return (
-		<div className="text-[1rem] px-4">
+		<div className="text-[1rem]  px-4">
 			<div className={`${isHeader ? "" : ""}`}>
 				{isHeader ? (
 					<>
@@ -64,7 +101,7 @@ const PriceWrapperTextFeature = ({
 					</>
 				) : (
 					<>
-						<p className="font-normal border flex items-center max-md:hidden py-2">
+						<p className="font-normal  flex items-center max-md:hidden py-2">
 							{
 								<svg
 									className={`fill-primary mr-3 md:hidden ${displayOnlyKeyFeature ? "hidden" : undefined}`}
@@ -75,7 +112,7 @@ const PriceWrapperTextFeature = ({
 									<path d="M10.28.28 3.989 6.575 1.695 4.28A1 1 0 0 0 .28 5.695l3 3a1 1 0 0 0 1.414 0l7-7A1 1 0 0 0 10.28.28Z"></path>
 								</svg>
 							}
-							{text ? text : <div className="border">&nbsp;</div>}
+							{text ? text : <div className="">&nbsp;</div>}
 						</p>
 						<p className="font-normal flex items-center md:hidden py-2 ">
 							<svg
@@ -116,7 +153,7 @@ const FeatureDetail = ({
 	displayOnlyKeyFeature?: boolean;
   }) => {
 	return (
-	  <div className="border text-gray-400 text-[1rem] ">
+	  <div className=" text-gray-400 text-[1rem] ">
 		<PriceWrapperTextFeature
 		  text={title}
 		  isHeader={true}
@@ -261,9 +298,12 @@ const featureKeys = Array.from(new Set(
 	  Object.keys(plan.features)
 	)
   ));
+
+
+  console.log(featureKeys); 
   const Pricing: React.FC = () => {
 	return (
-	  <div className="text-[0.87rem] leading-[1.5715] font-medium relative">
+	  <div data-section = 'pricing' className=" text-[0.87rem] leading-[1.5715] font-medium relative">
 		<div className="grid md:grid-cols-4 grid-cols-1">
 		  {/* Leftmost column for feature titles */}
 		  <div className="max-md:hidden border">
@@ -272,22 +312,32 @@ const featureKeys = Array.from(new Set(
 			{featureKeys.map((each, index) => {
         // Gather the concatenated type + mode strings for the current featureKey
         const combinedFeatures = PRICING_PLANS.flatMap(plan =>
-          plan.features[each]?.map(feature => `${feature.type} + ${feature.mode}`) || []
+          plan.features[each]?.map(feature => {
+			return {
+				subFeature:feature.subFeature, quantity:feature.quantity
+			}
+		  }) || []
         );
+		
+
+		console.log(combinedFeatures); 
+
 
         return (
           <FeatureDetail
-            key={index}
+            key={`${each}-${index}`}
             title={each} // Title remains the featureKey
-            listOfFeatures={[{subFeature:'', quantity:0}, {subFeature:'', quantity:0}, {subFeature:'', quantity:0}, {subFeature:'', quantity:0}]}
+			displayOnlyKeyFeature={true}
+            listOfFeatures={combinedFeatures}
           />
         );
       })}
+      
 		  </div>
   
 		  {/* Pricing Plan Columns */}
 		  {PRICING_PLANS.map((plan, index) => (
-			<div key={plan.content} className={index === 1 ? "border" : ""}>
+			<div key={plan.content} data-pricing-card className={index === 1 ? "border" : ""}>
 			  {/* Plan Header */}
 			  <PlanHeader
 				content={plan.content}
@@ -315,11 +365,17 @@ const featureKeys = Array.from(new Set(
 				{featureKeys.map((featureKey, featureIndex) => {
 				  const features = plan.features[featureKey] || []; // Default to empty array
 				  return (
+					<>
 					<FeatureDetail
 					  key={`${plan.content}-${featureKey}-${featureIndex}`}
-					  title={featureIndex === 0 ? featureKey : ""}
-					  listOfFeatures={features}
+					  title={" "}
+					  listOfFeatures={[]}
 					/>
+					<FeatureDetail
+					  key={`${plan.content}-${featureKey}-${featureIndex}`}
+					  title={""}
+					  listOfFeatures={features}
+					/></>
 				  );
 				})}
 			  </div>
