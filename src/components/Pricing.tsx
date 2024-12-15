@@ -9,7 +9,7 @@ import { ScrollTrigger } from "gsap/all";
 const PlanHeader = ({
 	content,
 	amountMoney,
-	isGreenColor,
+	
 	customforpricecomponent,
 	isHeader
 }: {
