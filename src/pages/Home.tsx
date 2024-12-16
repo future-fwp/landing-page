@@ -388,7 +388,7 @@ const Home = () => {
 
 	const [position, setPosition] = useState({ x: 0, y: 0 }); // position glow mousepointer event ;;
 
-	const [positionSecondFeature, setPositionSecondFeature] = useState({ x: 0, y: 0 }); // position glow mousepointer event ;;
+	// const [positionSecondFeature, setPositionSecondFeature] = useState({ x: 0, y: 0 }); // position glow mousepointer event ;;
 
 	// Handle mouse movement
 	const handleMouseMove = (event: MouseEvent) => {
@@ -408,22 +408,22 @@ const Home = () => {
 		}
 	};
 
-	const handleMouseMoveSecondFeature = (event: MouseEvent) => {
-		if (gridRef.current) {
-			const rect = gridRef.current.getBoundingClientRect();
-			const { clientX, clientY } = event;
+	// const handleMouseMoveSecondFeature = (event: MouseEvent) => {
+	// 	if (gridRef.current) {
+	// 		const rect = gridRef.current.getBoundingClientRect();
+	// 		const { clientX, clientY } = event;
 
-			// Calculate relative position
-			const x = clientX - rect.left;
-			const y = clientY - rect.top;
+	// 		// Calculate relative position
+	// 		const x = clientX - rect.left;
+	// 		const y = clientY - rect.top;
 
-			// Constrain the circle within the grid container
-			const constrainedX = Math.min(Math.max(x, 0), rect.width);
-			const constrainedY = Math.min(Math.max(y, 0), rect.height);
+	// 		// Constrain the circle within the grid container
+	// 		// const constrainedX = Math.min(Math.max(x, 0), rect.width);
+	// 		// const constrainedY = Math.min(Math.max(y, 0), rect.height);
 
-			setPositionSecondFeature({ x: constrainedX, y: constrainedY });
-		}
-	};
+	// 		// setPositionSecondFeature({ x: constrainedX, y: constrainedY });
+	// 	}
+	// };
 
 
 	// GSAP Animation Setup
@@ -574,7 +574,7 @@ const Home = () => {
         // Parallax effect for illustrations
         gsap.utils.toArray('.parallax-layer').forEach((layer: any) => {
             gsap.to(layer, {
-                y: (i, el) => -ScrollTrigger.maxScroll(window) * el.dataset.speed,
+                y: (_, el) => -ScrollTrigger.maxScroll(window) * el.dataset.speed,
                 ease: 'none',
                 scrollTrigger: {
                     trigger: layer,
@@ -594,12 +594,12 @@ const Home = () => {
 		};
 	}, []);
 
-	React.useEffect(() => {
-		window.addEventListener("mousemove", handleMouseMoveSecondFeature);
-		return () => {
-			window.removeEventListener("mousemove", handleMouseMoveSecondFeature);
-		};
-	}, []);
+	// React.useEffect(() => {
+	// 	window.addEventListener("mousemove", handleMouseMoveSecondFeature);
+	// 	return () => {
+	// 		window.removeEventListener("mousemove", handleMouseMoveSecondFeature);
+	// 	};
+	// }, []);
 
 	const [currentIndex, setCurrentIndex] = useState(0);
 
