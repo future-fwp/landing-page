@@ -125,3 +125,9 @@ Original template: [https://cruip.com/demos/stellar/](https://cruip.com/demos/st
 - **Data Consolidation**: Centralized project data in `/src/data/index.ts`
 - Improved code organization and maintainability
 - Simplified data management across components
+
+
+
+# Deployed website 
+- see my website at 
+https://675f96d2c3882600086e8508--security-landingpage.netlify.app/ 
