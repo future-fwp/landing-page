@@ -1,11 +1,13 @@
 
 import CustomAppNameText from "./CustomAppNameText";
 import CustomTextDescriptionCard from "./CustomTextDescriptionCard";
+import { useRef, useEffect } from "react";
+import { gsap } from "gsap";
 const CardComment = ({
 	webappName,
 	description,
-	listImageUrlOfPeople,
-	numberpeopleLikes,
+	listImageUrlOfPeople = [],
+	numberpeopleLikes = "0",
 	sourceImage,
 	haveStar,
 }: {
@@ -16,8 +18,118 @@ const CardComment = ({
 	sourceImage: string;
 	haveStar: boolean;
 }) => {
+	const cardRef = useRef<HTMLDivElement>(null);
+    const borderTopRef = useRef<HTMLSpanElement>(null);
+    const borderRightRef = useRef<HTMLSpanElement>(null);
+    const borderBottomRef = useRef<HTMLSpanElement>(null);
+    const borderLeftRef = useRef<HTMLSpanElement>(null);
+
+
+
+    useEffect(() => {
+        if (!cardRef.current) return;
+
+        const borderColor = '#FFFFFF';
+        const tl = gsap.timeline({ 
+            repeat: -1, 
+            yoyo: true 
+        });
+
+
+        const cardWidth = cardRef.current.offsetWidth;
+
+
+        // Top border animation
+        tl.fromTo(
+            borderTopRef.current, 
+            { 
+                width: 0, 
+                backgroundColor: 'transparent', 
+				borderRadius:2
+            }, 
+            { 
+                width: `${cardWidth}px`, 
+                backgroundColor: borderColor,
+                duration: 1,
+                ease: 'none',
+				borderRadius:2
+            }
+        );
+
+        // Right border animation
+        tl.fromTo(
+            borderRightRef.current, 
+            { 
+                height: 0, 
+                backgroundColor: 'transparent' 
+            }, 
+            { 
+                height: '100%', 
+                backgroundColor: borderColor,
+                duration: 1,
+                ease: 'none'
+            }
+        );
+
+        // Bottom border animation
+        tl.fromTo(
+            borderBottomRef.current, 
+            { 
+                width: 0, 
+                backgroundColor: 'transparent' 
+            }, 
+            { 
+                width: `${cardWidth}px`,
+                backgroundColor: borderColor,
+                duration: 1,
+                ease: 'none'
+            }
+        );
+
+        // Left border animation
+        tl.fromTo(
+            borderLeftRef.current, 
+            { 
+                height: 0, 
+                backgroundColor: 'transparent' 
+            }, 
+            { 
+                height: '100%', 
+                backgroundColor: borderColor,
+                duration: 1,
+                ease: 'none'
+            }
+        );
+
+        return () => {
+            tl.kill();
+        };
+    }, []);
+
+
 	return (
-		<div className="p-5 bg-gray-800 rounded-xl text-white ">
+		<div ref = {cardRef} className="p-5 overflow-hidden relative bg-gray-800 rounded-xl text-white ">
+			 <span
+            ref={borderTopRef}
+            className="absolute top-0 left-0 h-[2px] w-0 bg-transparent z-10 rounded-full"
+            data-testid="border-top"
+        />
+        <span
+            ref={borderRightRef}
+            className="absolute top-0 right-0 w-[2px] h-0 bg-transparent z-10 rounded-full"
+            data-testid="border-right"
+        />
+        <span
+            ref={borderBottomRef}
+            className="absolute bottom-0 right-0 h-[2px] w-0 bg-transparent z-10 rounded-full"
+            data-testid="border-bottom"
+        />
+        <span
+            ref={borderLeftRef}
+            className="absolute bottom-0 left-0 w-[2px] h-0 bg-transparent z-10 rounded-full"
+            data-testid="border-left"
+        />
+
 			<div className="flex items-center">
 				<div className="relative flex w-[40px] h-[40px] mb-3">
 					<img
@@ -27,6 +139,7 @@ const CardComment = ({
 					></img>
 					{haveStar && (
 						<img
+							data-testid="star-icon"
 							src="https://preview.cruip.com/stellar/images/star.svg"
 							alt=""
 							className="absolute right-0 "
@@ -50,7 +163,7 @@ const CardComment = ({
 							return (
 								<img
 									src={each}
-									alt={each}
+									alt={`User ${index + 1}`}
 									key={index}
 									className="[&:not(:first-child)]:-ml-3 rounded-full"
 								/>

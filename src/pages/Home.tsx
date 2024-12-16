@@ -1,4 +1,4 @@
-import React, { useState,useRef, createRef} from "react";
+import React, { useState} from "react";
 import Container from "../components/ComponentsForAll/Container";
 import { Link } from "react-router-dom";
 import CustomTitle from "../components/ComponentsForAll/CustomTitle";
@@ -384,7 +384,7 @@ const featureforFourthComponent = [
 const Home = () => {
 	const [cards, setCards] = useState(CardForFirstFeatureArray);
 
-	const gridRef = React.createRef<HTMLDivElement | null>(null);
+	const gridRef = React.createRef<HTMLDivElement>();
 
 	const [position, setPosition] = useState({ x: 0, y: 0 }); // position glow mousepointer event ;;
 

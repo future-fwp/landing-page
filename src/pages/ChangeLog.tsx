@@ -48,7 +48,7 @@ const changeLogData: ChangeLogEntry[] = [
 const ChangeLog = () => {
     return (
         <section className="relative py-20 overflow-hidden">
-            <div className="absolute inset-0 z-0">
+            <div className="absolute z-10 inset-0 w-[100vw]">
                 <RadialCanvas />
             </div>
             <Container>
@@ -72,13 +72,13 @@ const ChangeLog = () => {
                         {changeLogData.map((entry, index) => (
                             <div key={entry.version} className={`mb-12 ${index !== changeLogData.length - 1 ? 'border-b border-gray-800 pb-12' : ''}`}>
                                 <div className="flex items-center mb-4">
-                                    <span className="text-purple-500 font-semibold mr-2">v{entry.version}</span>
+                                    <span className="text-primary font-semibold mr-2">v{entry.version}</span>
                                     <span className="text-gray-500">• {entry.date}</span>
                                 </div>
                                 <ul className="space-y-4">
                                     {entry.changes.map((change, idx) => (
                                         <li key={idx} className="flex items-start">
-                                            <span className="mr-3 mt-1 text-purple-500">•</span>
+                                            <span className="mr-3 mt-1 text-primary">•</span>
                                             <CustomParagraphGrayText
                                                 content={change}
                                                 customparagraphgrayprops="!text-left"

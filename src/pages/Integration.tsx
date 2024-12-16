@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Container from "../components/ComponentsForAll/Container";
 import FeatureContainers from "../components/ComponentsForAll/FeatureContainer";
 import CustomSpanGreenGradient from "../components/ComponentsForAll/CustomSpanGreenGradient";
@@ -7,6 +7,7 @@ import IllustrationCenter from "../components/ComponentsForAll/IllustrationCente
 import CustomParagraphGrayText from "../components/ComponentsForAll/CustomParagraph";
 import CustomHeroHeader from "../components/ComponentsForAll/CustomHeroHeader";
 import GroupLayOut from "../components/Integration/GroupLayOut";
+import gsap from "gsap";
 const cardData = [
 	{
 		webappName: "Retool",
@@ -153,6 +154,9 @@ const Integration = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const maxIndex = updatedCards.length - 1;
 
+
+	
+
 	return (
 		<div>
 			<section>
@@ -185,7 +189,7 @@ const Integration = () => {
 							}
 							CustomParagraphText={
 								<CustomParagraphGrayText
-									customparagraphgrayprops="max-w-[48rem] "
+									customparagraphgrayprops="max-w-[48rem] mx-auto "
 									content="Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever."
 								></CustomParagraphGrayText>
 							}
@@ -201,12 +205,93 @@ const Integration = () => {
 				</Container>
 			</section>
 			<section className="relative">
-				<FeatureContainers props="pb-[3rem] md:pb-[5rem] relative ">
-					<div className="flex *:min-w-[400px] overflow-scroll ">
-						<div className="bg-gradient-to-r from-black/60 via-black/40 to-transparent w-[200px] h-[calc(100%-160px)] left-0 absolute"></div>
+				<FeatureContainers props="bg-black pb-[3rem] md:pb-[5rem] relative flex items-center flex-col ">
+					<div className="*:min-w-[400px] flex max-w-[calc(100vw-250px)] overflow-scroll overflow-x-hidden ">
+						<div className=" w-[200px]  left-0 absolute"></div>
 						{updatedCards.map((each, index) => {
+							 const boxRef = useRef<HTMLDivElement>(null);
+							 const leftSideRef = useRef<HTMLSpanElement>(null);
+							 const topSideRef = useRef<HTMLSpanElement>(null);
+							 const rightSideRef = useRef<HTMLSpanElement>(null);
+							 const bottomSideRef = useRef<HTMLSpanElement>(null);
+
+							const borderColor = '#CC0000' 
+
+							 useEffect(() => {
+								if (!boxRef.current) return;
+							
+								const tl = gsap.timeline({ 
+								  repeat: -1, 
+								  yoyo: true 
+								});
+							
+								// Top side animation
+								tl.fromTo(
+								  topSideRef.current, 
+								  { 
+									width: 0, 
+									backgroundColor: borderColor 
+								  }, 
+								  { 
+									width: '100%', 
+									backgroundColor: borderColor,
+									duration: 1,
+									ease: 'none'
+								  }
+								);
+							
+								// Right side animation
+								tl.fromTo(
+								  rightSideRef.current, 
+								  { 
+									height: 0, 
+									backgroundColor: borderColor 
+								  }, 
+								  { 
+									height: '100%', 
+									backgroundColor: borderColor,
+									duration: 1,
+									ease: 'none'
+								  }
+								);
+							
+								// Bottom side animation
+								tl.fromTo(
+								  bottomSideRef.current, 
+								  { 
+									width: 0, 
+									backgroundColor: borderColor 
+								  }, 
+								  { 
+									width: '100%', 
+									backgroundColor: borderColor,
+									duration: 1,
+									ease: 'none'
+								  }
+								);
+							
+								// Left side animation
+								tl.fromTo(
+								  leftSideRef.current, 
+								  { 
+									height: 0, 
+									backgroundColor: borderColor 
+								  }, 
+								  { 
+									height: '100%', 
+									backgroundColor: borderColor,
+									duration: 1,
+									ease: 'none'
+								  }
+								);
+							
+								return () => {
+								  tl.kill();
+								};
+							  }, [borderColor]);
 							return (
 								<div
+								ref={boxRef} 
 									key={index}
 									className="mr-4"
 									style={{
@@ -341,35 +426,8 @@ const Integration = () => {
 					></LastComponent>
 				</Container>
 			</section>
-			<div className="w-full flex justify-center">
-				<div className="relative">
-					<div className="absolute w-full max-w-[600px] h-[400px] bg-emerald-500/20 rounded-full blur-3xl -z-10"></div>
-					<div className="bg-gradient-to-b from-black/40 to-black/80 backdrop-blur-sm border border-emerald-500/10 rounded-2xl p-8 max-w-[600px]">
-						<div className="flex flex-col gap-4">
-							<label className="flex border-b border-emerald-500/20 p-2">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									fill=""
-									viewBox="0 0 24 24"
-									strokeWidth="1.5"
-									stroke="white"
-									className="size-6 mr-3 stroke-emerald-400"
-								>
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-									/>
-								</svg>
-								<input
-									className="bg-transparent outline-none text-white w-full placeholder:text-gray-400"
-									placeholder="Search..."
-								></input>
-							</label>
-						</div>
-					</div>
-				</div>
-			</div>
+			
+			
 		</div>
 	);
 };
