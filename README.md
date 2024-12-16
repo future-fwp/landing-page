@@ -83,6 +83,25 @@ src/
 - Added comprehensive changelog
 - Improved TypeScript types
 
+## 🧪 Testing
+
+- Jest for unit testing
+- React Testing Library for component tests
+- GSAP animation mocking in tests
+- TypeScript type safety in test files
+
+### Running Tests
+
+```bash
+npm test
+```
+
+### Test Coverage
+
+- Component tests for `CardComment`
+- Mock GSAP animations for consistent testing
+- Comprehensive test cases covering rendering and interaction scenarios
+
 ## 🌐 Browser Support
 
 - Chrome (latest)
