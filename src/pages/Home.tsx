@@ -29,6 +29,7 @@ import {
   } from "../utils/data.tsx";
 import LastComponent from "../components/ComponentsForAll/LastComponent.tsx";
   
+// Everything you need to know
 
 const FeaturesSection = () => {
   return (
