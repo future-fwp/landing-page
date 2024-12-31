@@ -1,394 +1,199 @@
 import React, { useState} from "react";
 import Container from "../components/ComponentsForAll/Container";
-import { Link } from "react-router-dom";
-import CustomTitle from "../components/ComponentsForAll/CustomTitle";
-import CustomSubtitle from "../components/ComponentsForAll/CustomSubtitle";
-import CustomParagraphGrayText from "../components/ComponentsForAll/CustomParagraph";
+
 import CustomLinkWithArrow from "../components/ComponentsForAll/CustomLinkWithArrow";
-import tw from "tailwind-styled-components";
+
 import CustomSpanGreenGradient from "../components/ComponentsForAll/CustomSpanGreenGradient";
-import CustomMedianHeading from "../components/ComponentsForAll/CustomMedianHeading";
-import CardFirstFeature from "../components/Home/CardFirstFeature";
-import CustomHeroHeader from "../components/ComponentsForAll/CustomHeroHeader";
-import CardThirdFeature from "../components/Home/CardThirdFeature";
-import CardSecondandFourthFeatureSVG from "../components/Home/CardSecondandFourthFeatureSVG";
+
 import Pricing from "../components/Pricing";
 import IllustrationCenter from "../components/ComponentsForAll/IllustrationCenter";
-import IllustrationBlusTriangle from "../components/Home/IllustrationBlusTriangle";
+
 import FeatureContainers from "../components/ComponentsForAll/FeatureContainer";
 import CardTestimonial from "../components/Home/CardTestimonial";
-import LastComponent from "../components/ComponentsForAll/LastComponent";
-import RadialCanvas from "../components/Home/RadialCanvas";
+
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {gsap} from "gsap";
 gsap.registerPlugin(ScrollTrigger);
 
-
-import GlowgreenTopGradient from "../components/ComponentsForAll/GlowgreenTopGradient";
 import TriangleSVG from "../components/ComponentsForAll/TriangleSVG";
-const testimonials = [
-	{
-		imageUrl: "https://preview.cruip.com/stellar/images/testimonial-01.jpg",
-		altName: "Jessie J",
-		content: "Jessie provided exceptional service and was extremely helpful throughout the process.",
-	},
-	{
-		imageUrl: "https://preview.cruip.com/stellar/images/testimonial-02.jpg",
-		altName: "Mark Luk",
-		content: "Mark’s attention to detail and commitment to quality is unparalleled.",
-	},
-	{
-		imageUrl: "https://preview.cruip.com/stellar/images/testimonial-03.jpg",
-		altName: "Jeff Kahl",
-		content: "Jeff’s expertise and professionalism were evident from start to finish.",
-	},
-];
+import { 
+	// LastPagesComponent, 
+	testimonials, 
+	// cardDataInthisrdFeature, 
+	featureforFourthComponent, 
+	FeatureCard, 
+	issueDetectionFeatures, 
+	trustFeatures, 
+	AdvanceFeature, 
+	FeatureSecurity 
+  } from "../utils/data.tsx";
+import LastComponent from "../components/ComponentsForAll/LastComponent.tsx";
+  
 
-// Array of strings containing name and position
-const namesAndPositions = [
-	{ name: "Jessie J", position: "Customer Service Specialist" },
-	{ name: "Mark Luk", position: "Product Manager" },
-	{ name: "Jeff Kahl", position: "Technical Lead" },
-];
-
-const CustomMediumHeadingInSecondFeature = ({ content }: { content: string }) => {
-	return (
-		<h3 className="font-semibold text-[1.25rem] leading-[1.5] pb-[0.25rem] text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-gray-300 to-gray-400">
-			{content}
-		</h3>
-	);
+const FeaturesSection = () => {
+  return (
+    <section id="features" className="py-16 bg-secondary">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-secondary/20 sm:text-4xl">
+            Powerful Features for Your Landing Page
+          </h2>
+          <p className="mt-4 text-xl text-white">
+            Everything you need to create a high-converting landing page
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+		{featureforFourthComponent.map((category, categoryIndex) => (
+            <div key={categoryIndex} className="py-4 first:pt-0">
+              <CustomSpanGreenGradient
+                content={category.category}
+                addlayout="mb-[2rem]"
+              />
+              <div className="grid gap-6">
+                {category.features.map((feature, featureIndex) => (
+                  <FeatureCard 
+                    key={featureIndex}
+                    icon={feature.icon}
+                    title={feature.title}
+                    description={feature.description}
+                    details={feature.details}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
-// const FeatureContainer = ({ props }: { props: string }) => {
-// 	return <FeatureContainers props={props}></FeatureContainers>;
-// };
+const WhyTrustUsSection = () => {
+  
 
-const CardForContainerThirdFeature = tw.div`flex overflow-scroll`;
+  return (
+    <section className="bg-black py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-extrabold text-white sm:text-4xl mb-4">
+            Why Trust Our Landing Page Solution?
+          </h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            We've built a platform that combines cutting-edge technology, 
+            user-centric design, and unparalleled performance to help you 
+            create landing pages that convert.
+          </p>
+        </div>
 
-const FeatureSecondComponent = [
-	{
-		title: "Filters",
-		svgElement: (
-			<svg
-				className="size-4"
-				xmlns="http://www.w3.org/2000/svg"
-				width="16"
-				height="16"
-			>
-				<path d="M7.999 2.34a4.733 4.733 0 0 0-6.604 6.778l5.904 5.762a1 1 0 0 0 1.4 0l5.915-5.77a4.733 4.733 0 0 0-6.615-6.77Zm5.208 5.348-5.208 5.079-5.2-5.07a2.734 2.734 0 0 1 3.867-3.864c.182.19.335.404.455.638a1.04 1.04 0 0 0 1.756 0 2.724 2.724 0 0 1 5.122 1.294 2.7 2.7 0 0 1-.792 1.923Z"></path>
-			</svg>
-		),
-		description: "Login box must find the right balance for the user convenience, privacy and security.",
-	},
-	{
-		title: "Configurable",
-		svgElement: (
-			<svg
-				className="size-4 "
-				xmlns="http://www.w3.org/2000/svg"
-				width="16"
-				height="16"
-			>
-				<path d="M11 0c1.3 0 2.6.5 3.5 1.5 1 .9 1.5 2.2 1.5 3.5 0 1.3-.5 2.6-1.4 3.5l-1.2 1.2c-.2.2-.5.3-.7.3-.2 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.1-1.2c.6-.5.9-1.3.9-2.1s-.3-1.6-.9-2.2C12 1.7 10 1.7 8.9 2.8L7.7 4c-.4.4-1 .4-1.4 0-.4-.4-.4-1 0-1.4l1.2-1.1C8.4.5 9.7 0 11 0ZM8.3 12c.4-.4 1-.5 1.4-.1.4.4.4 1 0 1.4l-1.2 1.2C7.6 15.5 6.3 16 5 16c-1.3 0-2.6-.5-3.5-1.5C.5 13.6 0 12.3 0 11c0-1.3.5-2.6 1.5-3.5l1.1-1.2c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4L2.9 8.9c-.6.5-.9 1.3-.9 2.1s.3 1.6.9 2.2c1.1 1.1 3.1 1.1 4.2 0L8.3 12Zm1.1-6.8c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-4.2 4.2c-.2.2-.5.3-.7.3-.2 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l4.2-4.2Z"></path>
-			</svg>
-		),
-		description: "Login box must find the right balance for the user convenience, privacy and security.",
-	},
-	{
-		title: "Adaptable",
-		svgElement: (
-			<svg
-				className="size-4 "
-				xmlns="http://www.w3.org/2000/svg"
-				width="16"
-				height="16"
-			>
-				<path d="M14 0a2 2 0 0 1 2 2v4a1 1 0 0 1-2 0V2H2v12h4a1 1 0 0 1 0 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12Zm-1.957 10.629 3.664 3.664a1 1 0 0 1-1.414 1.414l-3.664-3.664-.644 2.578a.5.5 0 0 1-.476.379H9.5a.5.5 0 0 1-.48-.362l-2-7a.5.5 0 0 1 .618-.618l7 2a.5.5 0 0 1-.017.965l-2.578.644Z"></path>
-			</svg>
-		),
-		description: "Login box must find the right balance for the user convenience, privacy and security.",
-	},
-	{
-		title: "Authorization",
-		svgElement: (
-			<svg
-				className="size-4 "
-				xmlns="http://www.w3.org/2000/svg"
-				width="16"
-				height="16"
-			>
-				<path d="M14.3.3c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-8 8c-.2.2-.4.3-.7.3-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l8-8ZM15 7c.6 0 1 .4 1 1 0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8c.6 0 1 .4 1 1s-.4 1-1 1C4.7 2 2 4.7 2 8s2.7 6 6 6 6-2.7 6-6c0-.6.4-1 1-1Z"></path>
-			</svg>
-		),
-		description: "Login box must find the right balance for the user convenience, privacy and security.",
-	},
-	{
-		title: "Management",
-		svgElement: (
-			<svg
-				className="size-4 "
-				xmlns="http://www.w3.org/2000/svg"
-				width="16"
-				height="16"
-			>
-				<path d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12Zm0 14V2H2v12h12Zm-3-7H5a1 1 0 1 1 0-2h6a1 1 0 0 1 0 2Zm0 4H5a1 1 0 0 1 0-2h6a1 1 0 0 1 0 2Z"></path>
-			</svg>
-		),
-		description: "Login box must find the right balance for the user convenience, privacy and security.",
-	},
-	{
-		title: "Building",
-		svgElement: (
-			<svg
-				className="size-4 "
-				xmlns="http://www.w3.org/2000/svg"
-				width="16"
-				height="16"
-			>
-				<path d="M14.574 5.67a13.292 13.292 0 0 1 1.298 1.842 1 1 0 0 1 0 .98C15.743 8.716 12.706 14 8 14a6.391 6.391 0 0 1-1.557-.2l1.815-1.815C10.97 11.82 13.06 9.13 13.82 8c-.163-.243-.39-.56-.669-.907l1.424-1.424ZM.294 15.706a.999.999 0 0 1-.002-1.413l2.53-2.529C1.171 10.291.197 8.615.127 8.49a.998.998 0 0 1-.002-.975C.251 7.29 3.246 2 8 2c1.331 0 2.515.431 3.548 1.038L14.293.293a.999.999 0 1 1 1.414 1.414l-14 14a.997.997 0 0 1-1.414 0ZM2.18 8a12.603 12.603 0 0 0 2.06 2.347l1.833-1.834A1.925 1.925 0 0 1 6 8a2 2 0 0 1 2-2c.178 0 .348.03.512.074l1.566-1.566C9.438 4.201 8.742 4 8 4 5.146 4 2.958 6.835 2.181 8Z"></path>
-			</svg>
-		),
-		description: "Login box must find the right balance for the user convenience, privacy and security.",
-	},
-];
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {trustFeatures.map((feature, index) => (
+            <div 
+              key={index} 
+              className="bg-gray-800 rounded-xl p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl group"
+            >
+              <div className="flex items-center justify-center mb-6">
+                <div className="p-4 rounded-full bg-gray-700 group-hover:bg-opacity-80 transition-all duration-300">
+                  {feature.icon}
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold text-white text-center mb-4">
+                {feature.title}
+              </h3>
+              <p className="text-gray-400 text-center">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
 
-const CardForFirstFeatureArray = [
-	{
-		svgElement: (
-			<svg
-				className="mr-2"
-				xmlns="http://www.w3.org/2000/svg"
-				width="16"
-				height="16"
-			>
-				<path d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12Zm0 14V2H2v12h12Zm-3-7H5a1 1 0 1 1 0-2h6a1 1 0 0 1 0 2Zm0 4H5a1 1 0 0 1 0-2h6a1 1 0 0 1 0 2Z"></path>
-			</svg>
-		),
-		content: "Simplify your security",
-		activeClick: true,
-	},
-	{
-		svgElement: (
-			<svg
-				className="mr-2"
-				xmlns="http://www.w3.org/2000/svg"
-				width="16"
-				height="16"
-			>
-				<path d="M2 6H0V2a2 2 0 0 1 2-2h4v2H2v4ZM16 6h-2V2h-4V0h4a2 2 0 0 1 2 2v4ZM14 16h-4v-2h4v-4h2v4a2 2 0 0 1-2 2ZM6 16H2a2 2 0 0 1-2-2v-4h2v4h4v2Z"></path>
-			</svg>
-		),
-		content: "Customer identity",
-		activeClick: false,
-	},
-	{
-		svgElement: (
-			<svg
-				className="mr-2"
-				xmlns="http://www.w3.org/2000/svg"
-				width="16"
-				height="16"
-			>
-				<path d="M14.3.3c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-8 8c-.2.2-.4.3-.7.3-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l8-8ZM15 7c.6 0 1 .4 1 1 0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8c.6 0 1 .4 1 1s-.4 1-1 1C4.7 2 2 4.7 2 8s2.7 6 6 6 6-2.7 6-6c0-.6.4-1 1-1Z"></path>
-			</svg>
-		),
-		content: "Adaptable authentication",
-		activeClick: false,
-	},
-];
+        <div className="mt-16 text-center">
+          <CustomLinkWithArrow
+            content="Explore Our Features"
+            primary={true}
+            to="/features"
+            addLayOut="inline-flex mx-auto"
+          />
+        </div>
+      </div>
+    </section>
+  );
+};
 
-const cardDataInthisrdFeature = [
-	{
-		id: 1,
-		sourceImage: "./images/carousel-icon-01.svg",
-		altImage: "Icon 01",
-		title: "Anonymous User",
-		description: "Incorporate rich user profiling, and facilitate more transactions.",
-		link: "#0",
-	},
-	{
-		id: 2,
-		sourceImage: "./images/carousel-icon-02.svg",
-		altImage: "Icon 02",
-		title: "Bot Detection",
-		description: "Incorporate rich user profiling, and facilitate more transactions.",
-		link: "#0",
-	},
-	{
-		id: 3,
-		sourceImage: "./images/carousel-icon-03.svg",
-		altImage: "Icon 03",
-		title: "Social Integrations",
-		description: "Incorporate rich user profiling, and facilitate more transactions.",
-		link: "#0",
-	},
-	{
-		id: 4,
-		sourceImage: "./images/carousel-icon-04.svg",
-		altImage: "Icon 04",
-		title: "Progressive Profiling",
-		description: "Incorporate rich user profiling, and facilitate more transactions.",
-		link: "#0",
-	},
-	{
-		id: 5,
-		sourceImage: "./images/carousel-icon-05.svg",
-		altImage: "Icon 05",
-		title: "Secure Access",
-		description: "Incorporate rich user profiling, and facilitate more transactions.",
-		link: "#0",
-	},
-].map((each) => {
-	return {
-		...each,
-		sourceImage: "https://preview.cruip.com/stellar/" + each.sourceImage.slice(1, each.sourceImage.length),
-	};
-});
 
-const featureforFourthComponent = [
-	{
-		category: "API Authorization",
-		features: [
-			{
-				name: "Discussions",
-				svgElement: (
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="16"
-						height="16"
-					>
-						<path d="M13 16c-.153 0-.306-.035-.447-.105l-3.851-1.926c-.231.02-.465.031-.702.031-4.411 0-8-3.14-8-7s3.589-7 8-7 8 3.14 8 7c0 1.723-.707 3.351-2 4.63V15a1.003 1.003 0 0 1-1 1Zm-4.108-4.054c.155 0 .308.036.447.105L12 13.382v-2.187c0-.288.125-.562.341-.752C13.411 9.506 14 8.284 14 7c0-2.757-2.691-5-6-5S2 4.243 2 7s2.243 5 5 5 5-2.243 5-5-2.243-5-5-5ZM15.707 14.293 13.314 11.9a8.019 8.019 0 0 1-1.414 1.414l2.393 2.393a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414Z"></path>
-					</svg>
-				),
-				description: "Login box must find the right balance for the user convenience, privacy, and security.",
-			},
-			{
-				name: "Team Views",
-				svgElement: (
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="16"
-						height="16"
-					>
-						<path d="M15 9a3.841 3.841 0 0 0-2.661 1.545A2.524 2.524 0 0 0 10 9a1 1 0 1 0 0 2c.361 0 .57.279.89 1.284C10.243 13.08 9.441 14 9 14a1 1 0 0 0 0 2 3.841 3.841 0 0 0 2.661-1.545A2.524 2.524 0 0 0 14 16a1 1 0 0 0 0-2c-.361 0-.571-.279-.89-1.284C13.757 11.92 14.559 11 15 11a1 1 0 0 0 0-2Z"></path>
-						<path d="M10 8a1 1 0 0 0 0-2H7.825c.432-2.421.983-4 2.175-4a1 1 0 0 1 1 1 1 1 0 0 0 2 0 3 3 0 0 0-3-3C7.193 0 6.313 2.9 5.793 6H3a1 1 0 1 0 0 2h2.49c-.506 3.52-1 6-2.49 6a1 1 0 0 1-1-1 1 1 0 0 0-2 0 3 3 0 0 0 3 3c3.367 0 3.964-4.175 4.49-7.858L7.51 8H10Z"></path>
-					</svg>
-				),
-				description: "Login box must find the right balance for the user convenience, privacy, and security.",
-			},
-			{
-				name: "Powerful Search",
-				svgElement: (
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="16"
-						height="16"
-					>
-						<path d="M7 14c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7ZM7 2C4.243 2 2 4.243 2 7s2.243 5 5 5 5-2.243 5-5-2.243-5-5-5ZM15.707 14.293 13.314 11.9a8.019 8.019 0 0 1-1.414 1.414l2.393 2.393a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414Z"></path>
-					</svg>
-				),
-				description: "Login box must find the right balance for the user convenience, privacy, and security.",
-			},
-		],
-	},
-	{
-		category: "User Management",
-		features: [
-			{
-				name: "Analytics",
-				svgElement: (
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="16"
-						height="16"
-					>
-						<path d="M2 6H0V2a2 2 0 0 1 2-2h4v2H2v4ZM16 6h-2V2h-4V0h4a2 2 0 0 1 2 2v4ZM14 16h-4v-2h4v-4h2v4a2 2 0 0 1-2 2ZM6 16H2a2 2 0 0 1-2-2v-4h2v4h4v2Z"></path>
-					</svg>
-				),
-				description: "Login box must find the right balance for the user convenience, privacy, and security.",
-			},
-			{
-				name: "Notifications",
-				svgElement: (
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="16"
-						height="16"
-					>
-						<path d="M6.974 14c-.3 0-.7-.2-.9-.5l-2.2-3.7-2.1 2.8c-.3.4-1 .5-1.4.2-.4-.3-.5-1-.2-1.4l3-4c.2-.3.5-.4.9-.4.3 0 .6.2.8.5l2 3.3 3.3-8.1c0-.4.4-.7.8-.7s.8.2.9.6l4 8c.2.5 0 1.1-.4 1.3-.5.2-1.1 0-1.3-.4l-3-6-3.2 7.9c-.2.4-.6.6-1 .6Z"></path>
-					</svg>
-				),
-				description: "Login box must find the right balance for the user convenience, privacy, and security.",
-			},
-			{
-				name: "Integrations",
-				svgElement: (
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="16"
-						height="16"
-					>
-						<path d="M14 0H2c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h8l5-5V1c0-.6.4-1 1-1ZM3 2h10v8H9v4H3V2Z"></path>
-					</svg>
-				),
-				description: "Login box must find the right balance for the user convenience, privacy, and security.",
-			},
-		],
-	},
-	{
-		category: "Standard Security",
-		features: [
-			{
-				name: "Privacy",
-				svgElement: (
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="16"
-						height="16"
-					>
-						<path d="M15.5 11H13a5.022 5.022 0 0 1-3.453-1.4l-1.2 1.607A7.065 7.065 0 0 0 12 12.92v1.586a.5.5 0 0 0 .853.349l3-3A.5.5 0 0 0 15.5 11ZM1 5a5.022 5.022 0 0 1 3.453 1.4l1.205-1.61A7.028 7.028 0 0 0 1 3a1 1 0 1 0 0 2ZM13 5h2.5a.5.5 0 0 0 .354-.853l-3-3A.5.5 0 0 0 12 1.5v1.58a7.032 7.032 0 0 0-4.6 2.72L5 9a5.025 5.025 0 0 1-4 2 1 1 0 0 0 0 2 7.034 7.034 0 0 0 5.6-2.8L9 7a5.025 5.025 0 0 1 4-2Z"></path>
-					</svg>
-				),
-				description: "Login box must find the right balance for the user convenience, privacy, and security.",
-			},
-			{
-				name: "Data Export",
-				svgElement: (
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="16"
-						height="16"
-					>
-						<path d="M14 14H2a1 1 0 0 0 0 2h12a1 1 0 0 0 0-2ZM7.293 11.707a1 1 0 0 0 1.414 0l5-5a1 1 0 1 0-1.414-1.414L9 8.586V1a1 1 0 1 0-2 0v7.586L3.707 5.293a1 1 0 0 0-1.414 1.414l5 5Z"></path>
-					</svg>
-				),
-				description: "Login box must find the right balance for the user convenience, privacy, and security.",
-			},
-			{
-				name: "Real-Time Sync",
-				svgElement: (
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="16"
-						height="16"
-					>
-						<path d="M14.6.085 8 2.885 1.4.085c-.5-.2-1.4-.1-1.4.9v11c0 .4.2.8.6.9l7 3c.3.1.5.1.8 0l7-3c.4-.2.6-.5.6-.9v-11c0-1-.9-1.1-1.4-.9ZM2 2.485l5 2.1v8.8l-5-2.1v-8.8Zm12 8.8-5 2.1v-8.7l5-2.1v8.7Z"></path>
-					</svg>
-				),
-				description: "Login box must find the right balance for the user convenience, privacy, and security.",
-			},
-		],
-	},
-];
+
+const SpotIssuesFasterSection = () => {
+  
+
+  return (
+    <section className="bg-black py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-extrabold text-white sm:text-5xl mb-6">
+            Spot Issues <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#f1f5f9]">Faster</span>
+          </h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            Leverage cutting-edge AI and advanced analytics to detect, diagnose, 
+            and resolve issues with unprecedented speed and precision.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {issueDetectionFeatures.map((feature, index) => (
+            <div 
+              key={index} 
+              className="bg-gray-800 rounded-xl p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl group"
+            >
+              <div className="flex items-center justify-center mb-6">
+                <div className="p-4 rounded-full bg-gray-700 group-hover:bg-opacity-80 transition-all duration-300">
+                  {feature.icon}
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold text-white text-center mb-4">
+                {feature.title}
+              </h3>
+              <p className="text-gray-400 text-center mb-4">
+                {feature.description}
+              </p>
+              <ul className="space-y-2 text-gray-300 text-sm text-center">
+                {feature.details.map((detail, detailIndex) => (
+                  <li key={detailIndex} className="flex items-center">
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      className="h-4 w-4 mr-2 text-primary" 
+                      fill="" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {detail}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <CustomLinkWithArrow
+            content="Explore Issue Detection"
+            primary={true}
+            to="/features/issue-detection"
+            addLayOut="inline-flex mx-auto"
+          />
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const Home = () => {
-	const [cards, setCards] = useState(CardForFirstFeatureArray);
+	
 
 	const gridRef = React.createRef<HTMLDivElement>();
 
-	const [position, setPosition] = useState({ x: 0, y: 0 }); // position glow mousepointer event ;;
+	const [, setPosition] = useState({ x: 0, y: 0 }); // position glow mousepointer event ;;
 
-	// const [positionSecondFeature, setPositionSecondFeature] = useState({ x: 0, y: 0 }); // position glow mousepointer event ;;
 
 	// Handle mouse movement
 	const handleMouseMove = (event: MouseEvent) => {
@@ -408,22 +213,6 @@ const Home = () => {
 		}
 	};
 
-	// const handleMouseMoveSecondFeature = (event: MouseEvent) => {
-	// 	if (gridRef.current) {
-	// 		const rect = gridRef.current.getBoundingClientRect();
-	// 		const { clientX, clientY } = event;
-
-	// 		// Calculate relative position
-	// 		const x = clientX - rect.left;
-	// 		const y = clientY - rect.top;
-
-	// 		// Constrain the circle within the grid container
-	// 		// const constrainedX = Math.min(Math.max(x, 0), rect.width);
-	// 		// const constrainedY = Math.min(Math.max(y, 0), rect.height);
-
-	// 		// setPositionSecondFeature({ x: constrainedX, y: constrainedY });
-	// 	}
-	// };
 
 
 	// GSAP Animation Setup
@@ -445,7 +234,7 @@ const Home = () => {
 
 			// Create a glow element
 			const glowElement = document.createElement('div');
-			glowElement.classList.add('absolute', 'bottom-0', 'left-1/2', 'transform', '-translate-x-1/2', 'w-64', 'h-64', 'bg-blue-500', 'rounded-full', 'opacity-30', 'blur-3xl');
+			// glowElement.classList.add('absolute', 'bottom-0', 'left-1/2', 'transform', '-translate-x-1/2', 'w-64', 'h-64', 'bg-blue-500', 'rounded-full', 'opacity-30', 'blur-3xl');
 			glowElement.setAttribute('data-animation-glow', 'true');
 			apiSecuritySection.appendChild(glowElement);
 
@@ -601,7 +390,7 @@ const Home = () => {
 	// 	};
 	// }, []);
 
-	const [currentIndex, setCurrentIndex] = useState(0);
+	// const [currentIndex, setCurrentIndex] = useState(0);
 
 	const [currentNameIndexForTestimonial, setcurrentNameIndexForTestimonial] = useState(0);
 
@@ -611,82 +400,69 @@ const Home = () => {
 				{/* Home Page */}
 				<section className="relative scrollTrigger-section">
 					<Container>
-						<div className="md:pt-[13rem] md:pb-[8rem] pt-[4rem] pb-[3rem]">
-							<div className="max-w-[48rem] mx-auto text-center ">
-								<Link
-									to="#"
-									className="inline-flex rounded-full items-center border px-3 py-0.5 mb-6 text-white bg-primary"
-								>
-									API Studio is now in beta{" "}
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										fill="none"
-										viewBox="0 0 24 24"
-										strokeWidth="1.5"
-										stroke="currentColor"
-										className="size-4 ml-1"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-										/>
-									</svg>
-								</Link>
-								<CustomTitle
-									addlayout="pb-[1rem] "
-									content={"The API Security Framework"}
-								></CustomTitle>
-								<CustomParagraphGrayText
-									content="Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever."
-									customparagraphgrayprops="mb-[2rem] "
-								></CustomParagraphGrayText>
-								<ul className="inline-flex justify-center ">
-									<li className="">
-										<CustomLinkWithArrow
-											content="Get Started"
-											primary={true}
-											to="#"
-										></CustomLinkWithArrow>
-									</li>
-									<li className="inline-flex ml-3">
-										<Link
-											to="/"
-											className="!py-1.5 !px-4 !text-white !bg-black rounded-full inline-flex items-center"
-										>
-											<svg
-												className="fill-white mr-2"
-												xmlns="http://www.w3.org/2000/svg"
-												width="16"
-												height="16"
-											>
-												<path d="m1.999 0 1 2-1 2 2-1 2 1-1-2 1-2-2 1zM11.999 0l1 2-1 2 2-1 2 1-1-2 1-2-2 1zM11.999 10l1 2-1 2 2-1 2 1-1-2 1-2-2 1zM6.292 7.586l2.646-2.647L11.06 7.06 8.413 9.707zM0 13.878l5.586-5.586 2.122 2.121L2.12 16z"></path>
-											</svg>
-											Read the docs
-										</Link>
-									</li>
-								</ul>
-							</div>
-						</div>
+					<div className="relative px-4 sm:px-6 lg:px-8 pt-16 pb-20 bg-secondary">
+      <div className="max-w-7xl mx-auto">
+        <div className="lg:grid lg:grid-cols-12 lg:gap-8">
+          <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+            <h1 className="text-4xl max-md:text-center  tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
+              <span className="block xl:inline">Create Stunning</span>{' '}
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-white xl:inline">Landing Pages</span>
+            </h1>
+            <p className="mt-3  text-white sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 lg:mx-0">
+              Transform your online presence with our powerful, intuitive landing page builder. 
+              Design, customize, and launch professional websites in minutes.
+            </p>
+            <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+              <div className="rounded-md shadow">
+                <a
+                  href="#features"
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary md:py-4 md:text-lg md:px-10"
+                >
+                  Get Started
+                </a>
+              </div>
+              <div className="mt-3 sm:mt-0 sm:ml-3">
+                <a
+                  href="#demo"
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white md:py-4 md:text-lg md:px-10"
+                >
+                  Watch Demo
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="mt-12 lg:mt-0 lg:col-span-6 flex items-center justify-center">
+            <div className="rounded-lg shadow-xl overflow-hidden">
+              <img 
+                className="w-full h-auto transform transition-transform duration-300 hover:scale-105"
+                src="/path/to/landing-page-mockup.png" 
+                alt="Landing Page Mockup"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 					</Container>
-					<IllustrationCenter
-						position="bottom-0"
-						children={
-							<img
-								src="https://preview.cruip.com/stellar/images/glow-bottom.svg"
-								alt="hero-illustration"
-								className="max-w-none h-auto"
-							/>
-						}
-					></IllustrationCenter>
+					
 				</section>
 
 				{/* Swiper  */}
 
 				{/* First Features */}
+				
+				{/* Second Feature */}
 				<section>
 					<Container>
-						
+						<FeatureContainers props="md:pt-[8rem]  pt-[4rem] ">
+							
+							<FeaturesSection />
+						</FeatureContainers>
+					</Container>
+				</section>
+				<section>
+					<Container>
+						{/* Second Feature */}
 						<IllustrationCenter
 							position="top-0"
 							children={
@@ -714,377 +490,193 @@ const Home = () => {
 														</g></svg>
 							}
 						></IllustrationCenter>
-						<FeatureContainers props="md:pt-[13rem] md:pb-[5rem] pt-[4rem] pb-[3rem] ">
-							<div className="flex flex-col-reverse md:flex-row items-center md:justify-between">
-								{/* content  */}
-								<div className="md:w-[58.333%] w-full max-md:text-center">
-									<CustomSpanGreenGradient
-										content="The security first platform"
-										addlayout={"mb-[0.75rem]"}
-									></CustomSpanGreenGradient>
-									<CustomMedianHeading
-										content="Simplify your security with authentication services"
-										addlayout="pb-[0.75rem] "
-									></CustomMedianHeading>
-									<CustomParagraphGrayText
-										content="Define access roles for the end-users, and extend your authorization capabilities to implement dynamic access control."
-										customparagraphgrayprops="mb-[2rem] "
-									></CustomParagraphGrayText>
-									<div className="mt-[2rem] max-w-[20rem] feature-section parallax-layer" data-speed= {0.1}>
-										{cards.map((each, index) => (
-											<CardFirstFeature
-												activeClick={each.activeClick}
-												svgElement={each.svgElement}
-												content={each.content}
-												setCards={setCards}
-												index={index}
-											/>
+						<section className=" py-16 md:py-20">
+						<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+							<div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+								{/* Content Column */}
+								<div className="lg:order-1 order-2 space-y-8">
+									<div className="inline-flex items-center rounded-full bg-secondary px-4 py-1.5 text-primary">
+										<span className="text-sm font-medium">
+											Advanced Authentication
+										</span>
+									</div>
+									
+									<h2 className="text-4xl md:text-5xl font-extrabold text-white">
+									Beyond a Simple
+										<p className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-white">
+										Login Box
+										</p>
+									</h2>
+									
+									<p className="text-xl text-white/60 max-w-xl">
+										Elevate your user authentication with an intelligent, secure, and user-friendly login experience that goes beyond traditional security measures.
+									</p>
+									
+									<div className="space-y-6">
+										{AdvanceFeature.map((feature, index:number) => (
+											<div 
+												key={index} 
+												className="flex items-center space-x-6 bg-gray-800 p-6 rounded-xl hover:shadow-md transition-all duration-300"
+											>
+												<div className="flex-shrink-0">{feature.icon}</div>
+												<div>
+													<h3 className="text-xl font-semibold text-white mb-2">
+														{feature.title}
+													</h3>
+													<p className="text-white">
+														{feature.description}
+													</p>
+												</div>
+											</div>
 										))}
 									</div>
+									
+									<div className="flex space-x-4">
+										<CustomLinkWithArrow
+											content="Learn More"
+											primary={true}
+											to="/features/authentication"
+											addLayOut="inline-flex items-center"
+										></CustomLinkWithArrow>
+									</div>
 								</div>
-
-								{/* image-radial gradient  */}
-								<div className="md:w-[calc(58.33%)] w-full min-h-auto text-white">
-									<RadialCanvas />
-								</div>
+								
+								{/* Illustration Column */}
+								
 							</div>
-						</FeatureContainers>
+						</div>
+					</section>
 					</Container>
 				</section>
-				{/* Second Feature */}
+				
 				<section>
 					<Container>
-						<FeatureContainers props="md:pt-[8rem]  pt-[4rem] ">
-							<CustomHeroHeader
-								CustomTitle={
-									<CustomSubtitle
-										content="Faster. Smarter."
-										addlayout="pb-[2rem] "
-									></CustomSubtitle>
-								}
-								CustomParagraphText={
-									<CustomParagraphGrayText
-										content="There are many variations available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
-										customparagraphgrayprops=""
-									></CustomParagraphGrayText>
-								}
-							/>
-							<div className="grid grid-cols-1 bg-inherit md:grid-cols-12 gap-6 relative overflow-hidden pb-[1.5rem] ">
-								<div className="md:col-span-12 border-gray-600 border relative">
-									<div
-										className="flex flex-col-reverse md:flex-row md:justify-between relative"
-										ref={gridRef}
-									>
-										<div className="flex items-center">
-											<div className=" md:pr-0 p-[2rem] max-md:pt-0">
-												<div className="mb-[1.25rem]">
-													<CustomMediumHeadingInSecondFeature content="Optimized for security" />
-													<p className="text-[#94A3B8]">
-														Optimize for user experience and privacy. Use social login integrations, lower
-														user friction, incorporate rich user profiling, and facilitate more
-														transactions.
-													</p>
-												</div>
-
-												<CustomLinkWithArrow
-													content="Learn more"
-													primary={false}
-													to="#"
-												/>
-											</div>
-										</div>
-										<div className="max-md:-mt-24 -mr-10 ">
-											<img
-												src="https://preview.cruip.com/stellar/images/feature-image-01.png"
-												alt=""
-												className="min-h-full"
-											/>
-										</div>
-
-										<div
-											// Use inline styles for dynamic positioning
-											style={{
-												top: `${position.y - 150}px`,
-												left: `${position.x - 150}px`,
-											}}
-											className="absolute bg-primary/60 blur-2xl w-[300px] h-[300px] rounded-full transition-all duration-[50ms] ease-linear transform will-change-transform"
-										></div>
-										<IllustrationBlusTriangle position="right-0"></IllustrationBlusTriangle>
-										<IllustrationCenter
-											position="bottom-0"
-											children={
-												<div className="bg-primary/60 flex items-end rounded-t-full blur-3xl justify-center w-[300px] h-[150px] ">
-													<div className="w-[150px] h-[75px] bg-primary  rounded-t-full"></div>
-												</div>
-											}
-										></IllustrationCenter>
-									</div>
-								</div>
-
-								<div className="md:col-span-7 border border-gray-600">
-									<div className="flex flex-col-reverse md:flex-col relative">
-										<div className="flex items-center">
-											<div className="p-[2rem] ">
-												<div className="mb-[1.25rem]">
-													<CustomMediumHeadingInSecondFeature content="Extensibility" />
-													<p className="text-[#94A3B8]">
-														Your login box must find the right balance between user convenience, privacy
-														and security.
-													</p>
-												</div>
-											</div>
-										</div>
-										<div className=" flex justify-center">
-											<img
-												src="https://preview.cruip.com/stellar/images/feature-image-02.png"
-												alt=""
-												className="min-h-full"
-											/>
-										</div>
-									</div>
-								</div>
-
-								<div className="md:col-span-5 border border-gray-600">
-									<div className="flex flex-col-reverse md:flex-col relative">
-										<div className="flex items-center">
-											<div className="p-[2rem] ">
-												<div className="mb-[1.25rem]">
-													<CustomMediumHeadingInSecondFeature content="Infinite options" />
-													<p className="text-[#94A3B8]">
-														Quickly apply filters to refine your issues lists and create custom views.
-													</p>
-												</div>
-											</div>
-										</div>
-										<div className=" flex justify-center">
-											<img
-												src="https://preview.cruip.com/stellar/images/feature-image-03.png"
-												alt=""
-												className="min-h-full"
-											/>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div className="grid md:grid-cols-3 gap-6">
-								{FeatureSecondComponent.map((each) => (
-									<CardSecondandFourthFeatureSVG
-										svgElement={each.svgElement}
-										title={each.title}
-										description={each.description}
-									/>
-								))}
-							</div>
-						</FeatureContainers>
-					</Container>
-				</section>
-				<section>
-					<Container>
-						{/* Second Feature */}
+						{/* Fourth Feature */}
 						<IllustrationCenter
 							children={
 								<TriangleSVG/>
 							}
-							position="top-0"
+							position="top-0 !left-[200px] min-[1152px]:!left-[calc((100vw-1152px)/2+200px)]" // custom position of left
 						></IllustrationCenter>
-						<FeatureContainers props="md:pt-[8rem]  pt-[4rem] md:pb-[5rem] pb-[3rem]">
-							<CustomHeroHeader
-								CustomTitle={
-									<CustomSubtitle
-										content="More than a login box"
-										addlayout="pb-[2rem] "
-									></CustomSubtitle>
-								}
-								CustomParagraphText={
-									<CustomParagraphGrayText
-										content="There are many variations available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
-										customparagraphgrayprops=""
-									></CustomParagraphGrayText>
-								}
-							/>
-							<div className="max-w-[48rem] mx-auto relative border">
-								<img
-									src="https://preview.cruip.com/stellar/images/feature-image-04.png"
-									alt=""
-									className="max-w-full h-auto"
-								/>
-								<div className="bg-primary -z-10 blur-3xl absolute w-[400px] h-[200px] rounded-t-full bottom-[24px] md:bottom-[40px] left-[calc(50%-200px)] "></div>
-							</div>
+						<FeatureContainers props="pt-[4rem] md:pt-[3rem]">
+							
+
+							<WhyTrustUsSection/>
+
+							{featureforFourthComponent.map((category, categoryIndex) => (
+            <div key={categoryIndex} className="py-4 first:pt-0">
+              <CustomSpanGreenGradient
+                content={category.category}
+                addlayout="mb-[2rem]"
+              />
+              <div className="grid md:grid-cols-3 gap-6">
+                {category.features.map((feature, featureIndex) => (
+                  <FeatureCard 
+                    key={featureIndex}
+                    icon={feature.icon}
+                    title={feature.title}
+                    description={feature.description}
+                    details={feature.details}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
 						</FeatureContainers>
 					</Container>
 				</section>
 				<section>
 					<Container>
-						{/* Third Feature */}
-						<FeatureContainers props="md:pt-[5rem] md:pt-[3rem]">
-							<CustomHeroHeader
-								CustomSpanGreenGradient={
-									<CustomSpanGreenGradient
-										content="The security first platform"
-										addlayout="mb-[2rem] "
-									></CustomSpanGreenGradient>
-								}
-								CustomTitle={
-									<CustomSubtitle
-										content="Spot issues faster"
-										addlayout="pb-[2rem] "
-									></CustomSubtitle>
-								}
-								CustomParagraphText={
-									<CustomParagraphGrayText
-										content="All the lorem ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet."
-										customparagraphgrayprops=""
-									></CustomParagraphGrayText>
-								}
-							/>
-
-							<CardForContainerThirdFeature>
-								<div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentIndex * 340}px)` }}>
-									{cardDataInthisrdFeature.map((each) => (
-										<CardThirdFeature
-											sourceImage={each.sourceImage}
-											altImage={each.altImage}
-											title={each.title}
-											description={each.description}
-											link={each.link}
-											currentGradient={currentIndex === cardDataInthisrdFeature.indexOf(each)}
-										/>
-									))}
-								</div>
-							</CardForContainerThirdFeature>
-							<div className="mt-[2rem]">
-								<div className="flex justify-end">
-									<div className="w-[3rem] cursor-pointer h-[3rem] flex justify-center items-center">
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-											stroke-width="1.5"
-											className={`size-6 ${
-												currentIndex === 0 ? "stroke-gray-500" : "stroke-white"
-											} hover:!stroke-purple-500`}
-											onClick={() => {
-												if (currentIndex > 0) {
-													setCurrentIndex(currentIndex - 1);
-												}
-											}}
-										>
-											<path
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
-											/>
-										</svg>
-									</div>
-									<div className="w-[3rem] cursor-pointer h-[3rem] flex justify-center items-center">
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-											stroke-width="1.5"
-											className={`size-6 ${
-												currentIndex === cardDataInthisrdFeature.length - 1 ? "stroke-gray-500" : "stroke-white"
-											} hover:!stroke-purple-500`}
-											onClick={() => {
-												if (currentIndex < cardDataInthisrdFeature.length - 1) {
-													setCurrentIndex(currentIndex + 1);
-												}
-											}}
-										>
-											<path
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												d="M13.5 4.5L21 12m0 0-7.5 7.5M21 12H3"
-											/>
-										</svg>
-									</div>
-								</div>
-							</div>
-						</FeatureContainers>
-					</Container>
-				</section>
-				<section className="relative">
-					{/* Fourth Feature */}
-					<IllustrationCenter
-						children={
-							<TriangleSVG/>
-						}
-						position="top-0 !left-[200px] min-[1152px]:!left-[calc((100vw-1152px)/2+200px)]" // custom position of left
-					></IllustrationCenter>
-					<Container>
-						<FeatureContainers props="pt-[4rem] md:pt-[3rem]">
-							<div className="max-w-[48rem] pb-[2rem] ">
-								<CustomSubtitle
-									content="Why trust us?"
-									addlayout="!text-left pb-[2rem] !inline-flex"
-								></CustomSubtitle>
-								<CustomParagraphGrayText
-									customparagraphgrayprops="!text-left"
-									content="Many desktop publishing packages and web page editors now use lorem ipsum as their default model text, and a search will uncover many web sites still in their infancy."
-								></CustomParagraphGrayText>
-							</div>
-
-							{featureforFourthComponent.map((each) => {
-								return (
-									<div
-										className="py-4 first:pt-0"
-										key={each.category}
-									>
-										<CustomSpanGreenGradient
-											content={each.category}
-											addlayout="mb-[2rem]"
-										></CustomSpanGreenGradient>
-
-										<div className="grid md:grid-cols-3 gap-6">
-											{each.features.map((each) => (
-												<CardSecondandFourthFeatureSVG
-													svgElement={each.svgElement}
-													title={each.name}
-													description={each.description}
-												></CardSecondandFourthFeatureSVG>
-											))}
+						{/* Authentication Services */}
+						<FeatureContainers props="md:pt-[8rem] pt-[4rem] md:pb-[5rem] pb-[3rem] bg-gradient-to-br from-black to-zinc-900">
+							<div className="max-w-7xl mx-auto">
+								<div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+									{/* Content Column */}
+									<div className="lg:order-1 order-2">
+										<div className="space-y-6">
+											<div className="inline-flex items-center rounded-full bg-secondary px-4 py-1.5 text-primary">
+												<span className="text-sm font-medium">
+													Authentication Reimagined
+												</span>
+											</div>
+											
+											<h2 className="text-4xl font-extrabold text-primary sm:text-5xl lg:text-6xl">
+												Secure Your 
+												<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-white ml-3">
+													Digital Identity
+												</span>
+											</h2>
+											
+											<p className="mt-4 text-xl text-white">
+												Revolutionize your security infrastructure with our intelligent authentication ecosystem. Protect, verify, and empower your users with seamless, advanced protection.
+											</p>
+											
+											<div className="mt-8 space-y-4">
+												{FeatureSecurity.map((feature, index) => (
+													<div key={index} className="flex items-start space-x-4 bg-gray-800 text-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+														<div className="flex-shrink-0">{feature.icon}</div>
+														<div>
+															<h3 className="text-lg font-semibold ">{feature.text}</h3>
+															<p className="text-sm">{feature.description}</p>
+														</div>
+													</div>
+												))}
+											</div>
+											
+											<div className="mt-10 flex space-x-4">
+												<CustomLinkWithArrow
+													content="Explore Authentication"
+													primary={true}
+													to="/features/authentication"
+													addLayOut="inline-flex items-center"
+												></CustomLinkWithArrow>
+												<a 
+													href="#demo" 
+													className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-primary bg-white transition-colors"
+												>
+													Watch Demo
+													<svg 
+														xmlns="http://www.w3.org/2000/svg" 
+														className="h-5 w-5 ml-2" 
+														viewBox="0 0 20 20" 
+														fill="currentColor"
+													>
+														<path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+													</svg>
+												</a>
+											</div>
 										</div>
 									</div>
-								);
-							})}
+									
+									{/* Illustration Column */}
+									<div className="lg:order-2 order-1 mt-12 lg:mt-0">
+										<div className="relative">
+											<div className="bg-gradient-to-br from-primary to-white rounded-3xl p-8 transform transition-transform duration-500 hover:scale-105">
+												<div className="aspect-w-16 aspect-h-10 overflow-hidden rounded-2xl shadow-2xl">
+													<img 
+														src="https://via.placeholder.com/150?auth-token=abcd1234" 
+														alt="Authentication Services" 
+														className="w-full h-full object-cover"
+													/>
+												</div>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</FeatureContainers>
 					</Container>
 				</section>
 				<section>
 					<Container>
-						<FeatureContainers props="md:py-[5rem] py-[3rem] ">
-							<IllustrationCenter
-								children={
-									<GlowgreenTopGradient/>
-								}
-								position="top-0 left-1/2"
-							></IllustrationCenter>
-							<CustomHeroHeader
-								CustomParagraphText={
-									<CustomParagraphGrayText
-										content="
-All the lorem ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet."
-										customparagraphgrayprops=""
-									></CustomParagraphGrayText>
-								}
-								CustomTitle={
-									<CustomSubtitle
-										content="Flexible plans and features"
-										addlayout="pb-[1rem] "
-									></CustomSubtitle>
-								}
-								CustomSpanGreenGradient={
-									<CustomSpanGreenGradient
-										content="Pricing plans"
-										addlayout=""
-									></CustomSpanGreenGradient>
-								}
-							></CustomHeroHeader>
-							<Pricing></Pricing>
-							<IllustrationCenter
-								children={
-									<svg
+						{/* Fifth Feature */}
+						{/*  */}
+						<SpotIssuesFasterSection />
+						<Pricing></Pricing>
+						<IllustrationCenter
+							children={
+								<svg
     xmlns="http://www.w3.org/2000/svg"
     width="434"
     height="427"
@@ -1116,15 +708,14 @@ All the lorem ipsum generators on the Internet tend to repeat predefined chunks 
         transform="matrix(1 0 0 -1 -661 1163)"
     ></path>
 </svg>
-								}
-								position="left-1/2 bottom-0"
-							/>
-						</FeatureContainers>
+							}
+							position="left-1/2 bottom-0"
+						/>
 					</Container>
 				</section>
 				<section>
-					<div className="md:px-6 px-4 mx-auto ">
-						<FeatureContainers props="md:pb-[5rem] pb-[3rem] bg-black ">
+					<div className="md:px-6 px-4 mx-auto bg-black  ">
+						<FeatureContainers props="md:pb-[5rem] pb-[3rem] ">
 							{testimonials.map((each) => {
 								return (
 									<>
@@ -1139,20 +730,20 @@ All the lorem ipsum generators on the Internet tend to repeat predefined chunks 
 								);
 							})}
 							<div className="flex  max-md:max-w-[300px] mx-auto flex-col md:flex-row justify-center ">
-								{namesAndPositions.map((each) => {
+								{testimonials.map((each) => {
 									return (
 										<button
-											key={each.name}
+											key={each.altName}
 											className={`${
-												currentNameIndexForTestimonial === namesAndPositions.indexOf(each)
+												currentNameIndexForTestimonial === testimonials.indexOf(each)
 													? "border text-white "
 													: "border-gray-400 border text-gray-400"
 											} px-3 py-1.5 m-1.5 text-[0.875rem] rounded-full`}
 											onClick={() => {
-												setcurrentNameIndexForTestimonial(namesAndPositions.indexOf(each));
+												setcurrentNameIndexForTestimonial(testimonials.indexOf(each));
 											}}
 										>
-											{each.name} {each.position}
+											{each.altName} {each.position}
 										</button>
 									);
 								})}
@@ -1160,12 +751,8 @@ All the lorem ipsum generators on the Internet tend to repeat predefined chunks 
 						</FeatureContainers>
 					</div>
 				</section>
-				<LastComponent
-					contentforSpanPurpleGradient="The security first platform"
-					HeaderText="Take control of your business"
-					DescriptionText="All the lorem ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet."
-					LinkText="Get started"
-				></LastComponent>
+				
+							<LastComponent contentforSpanPurpleGradient="Get started" HeaderText="Ready to start your journey?" DescriptionText="Sign up for our product and take your business to the next level." LinkText="Get Started" />
 			</main>
 		</>
 	);

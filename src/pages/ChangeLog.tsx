@@ -5,45 +5,8 @@ import CustomParagraphGrayText from "../components/ComponentsForAll/CustomParagr
 import FeatureContainers from "../components/ComponentsForAll/FeatureContainer";
 import RadialCanvas from "../components/Home/RadialCanvas";
 
-interface ChangeLogEntry {
-    version: string;
-    date: string;
-    changes: string[];
-}
+import { changeLogData } from "../utils/data";
 
-const changeLogData: ChangeLogEntry[] = [
-    {
-        version: "2.0.0",
-        date: "March 2024",
-        changes: [
-            "Added RadialCanvas component for improved visual effects",
-            "Implemented smooth card transitions in feature showcase",
-            "Improved TypeScript types and removed unnecessary React imports",
-            "Enhanced UI responsiveness and accessibility",
-            "Updated documentation and component structure"
-        ]
-    },
-    {
-        version: "1.5.0",
-        date: "February 2024",
-        changes: [
-            "Added new testimonial section",
-            "Implemented custom gradient effects",
-            "Enhanced mobile responsiveness",
-            "Added new feature demonstrations"
-        ]
-    },
-    {
-        version: "1.0.0",
-        date: "January 2024",
-        changes: [
-            "Initial release",
-            "Basic landing page structure",
-            "Core features implementation",
-            "Responsive design foundation"
-        ]
-    }
-];
 
 const ChangeLog = () => {
     return (
@@ -56,7 +19,7 @@ const ChangeLog = () => {
                     <div className="text-center mb-16">
                         <CustomSpanGreenGradient
                             content="Updates"
-                            addlayout="pb-3"
+                            addlayout=""
                         />
                         <CustomTitle
                             content="Product changelog"

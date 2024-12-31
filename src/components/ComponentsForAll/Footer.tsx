@@ -1,36 +1,90 @@
 import Container from "./Container";
 import FeatureContainers from "./FeatureContainer";
 import { Link } from "react-router-dom";
-const CompanyLogo = () => {
+
+
+const LinkFooter = [
+	{
+		titleName: "Products",
+		LinkCategory: [
+			{ name: "Features", pathName: "#" },
+			{ name: "Integrations", pathName: "#" },
+			{ name: "Pricing & Plans", pathName: "#" },
+			
+		],
+	},
+	{
+		titleName: "Company",
+		LinkCategory: [
+			{ name: "About us", pathName: "#" },
+			{ name: "Diversity & Inclusion", pathName: "#" },
+			
+		],
+	},
+	{
+		titleName: "Resources",
+		LinkCategory: [
+			{ name: "Community", pathName: "#" },
+			{ name: "Terms of service", pathName: "#" },
+			
+		],
+	},
+	{
+		titleName: "Legals",
+		LinkCategory: [
+			{ name: "Refund policy", pathName: "#" },
+			{ name: "Terms & Conditions", pathName: "#" },
+			
+		],
+	},
+];
+
+const LinkFooterDisplay = ({
+	title,
+	LinkCategory,
+}: {
+	title: string;
+	LinkCategory: { [keyName: string]: string }[];
+}) => {
 	return (
-		<div className="md:flex md:justify-between md:items-center lg:flex-col lg:h-full lg:items-start">
-			{/* Logo */}
-			<div className="">
-				<div className="">
-					<Link
-						to="/"
-						className="mb-[2rem] "
-					>
-						<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38">
-					<defs>
-						<linearGradient id="b" x1="87.629%" x2="9.97%" y1="28.473%" y2="86.882%">
-							<stop offset="0%" stop-color="#34C759" stop-opacity="0"/>
-							<stop offset="100%" stop-color="#34C759"/></linearGradient>
-							<filter id="a" width="141.4%" height="141.4%" x="-20.7%" y="-20.7%" filterUnits="objectBoundingBox">
-								<feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
-								</filter>
-								</defs>
-								<g fill="none" fill-rule="nonzero">
-									<rect stroke="#34C759" stroke-width="4" x="5" y="5" rx="4" width="28" height="28" filter="url(#a)"/>
-									<rect fill="url(#b)" x="5" y="5" rx="4" width="28" height="28"/>
-									</g>
-									</svg>
-					</Link>
-					<span className="text-gray-200"> Cruip.com - All rights reserved.</span>
-				</div>
-			</div>
-			{/* Social media */}
-			<div className="flex">
+		<div className="col-span-1">
+			<div className="text-white mt-2">{title}</div>
+			<ul className="">
+				{LinkCategory.map((each, index) => {
+					return (
+						<li
+							key={index}
+							className="text-gray-500 -tracking-[0.01em] [&:not(:first-child)]:mt-2"
+						>
+							<Link to={each.pathName}>{each.name}</Link>
+						</li>
+					);
+				})}
+			</ul>
+		</div>
+	);
+};
+import Logo from "./Logo";
+const Footer = () => {
+	return (
+		<Container>
+			<FeatureContainers props="py-[2rem] md:py-[3rem]">
+				<div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+					<div className="sm:max-md:col-span-1 md:max-lg:col-span-4  lg:col-span-1">
+						<Logo></Logo>
+					</div>
+
+					{LinkFooter.map((each, index) => {
+						return (
+							<div key={index}>
+								<LinkFooterDisplay
+									title={each.titleName}
+									LinkCategory={each.LinkCategory}
+								></LinkFooterDisplay>
+							</div>
+						);
+					})}
+					<div className="flex">
 				<div className="w-[40px] h-[40px] ">
 					<svg
 						viewBox="0 0 32 32"
@@ -61,94 +115,6 @@ const CompanyLogo = () => {
 					</svg>
 				</div>
 			</div>
-		</div>
-	);
-};
-
-const LinkFooter = [
-	{
-		titleName: "Products",
-		LinkCategory: [
-			{ name: "Features", pathName: "#" },
-			{ name: "Integrations", pathName: "#" },
-			{ name: "Pricing & Plans", pathName: "#" },
-			{ name: "Changelog", pathName: "#" },
-			{ name: "Our method", pathName: "#" },
-		],
-	},
-	{
-		titleName: "Company",
-		LinkCategory: [
-			{ name: "About us", pathName: "#" },
-			{ name: "Diversity & Inclusion", pathName: "#" },
-			{ name: "Blog", pathName: "#" },
-			{ name: "Careers", pathName: "#" },
-			{ name: "Financial statements", pathName: "#" },
-		],
-	},
-	{
-		titleName: "Resources",
-		LinkCategory: [
-			{ name: "Community", pathName: "#" },
-			{ name: "Terms of service", pathName: "#" },
-			{ name: "Report a vulnerability", pathName: "#" },
-		],
-	},
-	{
-		titleName: "Legals",
-		LinkCategory: [
-			{ name: "Refund policy", pathName: "#" },
-			{ name: "Terms & Conditions", pathName: "#" },
-			{ name: "Privacy policy", pathName: "#" },
-			{ name: "Brand Kit", pathName: "#" },
-		],
-	},
-];
-
-const LinkFooterDisplay = ({
-	title,
-	LinkCategory,
-}: {
-	title: string;
-	LinkCategory: { [keyName: string]: string }[];
-}) => {
-	return (
-		<div className="col-span-1">
-			<div className="text-white mt-2">{title}</div>
-			<ul className="">
-				{LinkCategory.map((each, index) => {
-					return (
-						<li
-							key={index}
-							className="text-gray-500 -tracking-[0.01em] [&:not(:first-child)]:mt-2"
-						>
-							<Link to={each.pathName}>{each.name}</Link>
-						</li>
-					);
-				})}
-			</ul>
-		</div>
-	);
-};
-const Footer = () => {
-	return (
-		<Container>
-			<FeatureContainers props="py-[2rem] md:py-[3rem]">
-				<div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
-					<div className="max-lg:order-last sm:max-md:col-span-2 md:max-lg:col-span-4  lg:col-span-2">
-						<CompanyLogo></CompanyLogo>
-					</div>
-
-					{LinkFooter.map((each, index) => {
-						return (
-							<div key={index}>
-								<LinkFooterDisplay
-									title={each.titleName}
-									LinkCategory={each.LinkCategory}
-								></LinkFooterDisplay>
-							</div>
-						);
-					})}
 				</div>
 			</FeatureContainers>
 		</Container>

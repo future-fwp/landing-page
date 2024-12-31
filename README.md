@@ -109,15 +109,6 @@ npm test
 - Safari (latest)
 - Edge (latest)
 
-## 📝 License
-
-This project is MIT licensed.
-
-## 🙏 Credits
-
-This project is inspired by and based on the [Stellar template](https://cruip.com/demos/stellar/) from Cruip.com. The original design and concept belong to Cruip, and we've recreated it using React and TypeScript as a learning exercise.
-
-Original template: [https://cruip.com/demos/stellar/](https://cruip.com/demos/stellar/)
 
 
 
@@ -128,6 +119,3 @@ Original template: [https://cruip.com/demos/stellar/](https://cruip.com/demos/st
 
 
 
-# Deployed website 
-- see my website at 
-https://675f96d2c3882600086e8508--security-landingpage.netlify.app/ 

@@ -1,6 +1,25 @@
 
-import CustomAppNameText from "./CustomAppNameText";
-import CustomTextDescriptionCard from "./CustomTextDescriptionCard";
+import { Link } from "react-router-dom";
+
+const CustomAppNameText = ({ content, path }: { content: string; path: string }) => {
+	return (
+		<div className="">
+			<Link
+				to={path}
+				className="ml-3 text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-gray-300 to-gray-400 font-semibold  leading-[1.5715] "
+			>
+				{content}
+			</Link>
+		</div>
+	);
+};
+
+
+const CustomTextDescriptionCard = ({ content }: { content: string }) => {
+	return <div className="text-[0.85rem] leading-[1.5715] text-gray-400">{content}</div>;
+};
+
+
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 const CardComment = ({
@@ -108,7 +127,7 @@ const CardComment = ({
 
 
 	return (
-		<div ref = {cardRef} className="p-5 overflow-hidden relative bg-gray-800 rounded-xl text-white ">
+		<div ref = {cardRef} className="p-5 overflow-hidden relative bg-black rounded-xl text-white ">
 			 <span
             ref={borderTopRef}
             className="absolute top-0 left-0 h-[2px] w-0 bg-transparent z-10 rounded-full"
@@ -140,7 +159,7 @@ const CardComment = ({
 					{haveStar && (
 						<img
 							data-testid="star-icon"
-							src="https://preview.cruip.com/stellar/images/star.svg"
+							src=""
 							alt=""
 							className="absolute right-0 "
 						/>

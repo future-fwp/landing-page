@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply bg-black;
+}
+@keyframes slide-up {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-33.33%);
+    }
+  }
+
+  @keyframes slide-down {
+    0% {
+      transform: translateY(-33.33%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 40s linear infinite;
+  }
+
+  .animate-slide-down {
+    animation: slide-down 40s linear infinite;
+  }
