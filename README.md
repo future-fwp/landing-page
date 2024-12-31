@@ -1,4 +1,4 @@
-# TW Stellar - Modern React Landing Page
+#  Modern React Landing Page
 
 A beautiful, responsive landing page built with React, TypeScript, and Tailwind CSS. This project features modern UI elements, smooth animations, and a component-based architecture.
 
