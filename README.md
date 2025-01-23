@@ -113,6 +113,10 @@ npm test
 - Safari (latest)
 - Edge (latest)
 
+## Future improvement: 
+- Build Sign in and Sign up component
+- Integration with API for backend development
+
 
 
 
