@@ -1,4 +1,4 @@
-#  Modern React Landing Page
+#  Modern React Landing Page ==> see my website [tailwind landing page](https://landing-page-a8f4d6.netlify.app/)
 
 A beautiful, responsive landing page built with React, TypeScript, and Tailwind CSS. This project features modern UI elements, smooth animations, and a component-based architecture.
 
@@ -24,7 +24,7 @@ A beautiful, responsive landing page built with React, TypeScript, and Tailwind 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/tailwind-landingpage.git
+git clone https://github.com/future-fwp/landing-page.git
 cd tailwind-landingpage
 ```
 
